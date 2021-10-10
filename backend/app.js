@@ -12,6 +12,6 @@ app.use(express.json());
 
 //ROUTES
 app.use('/users', userRouter);
-app.use('products', productRouter);
+app.use('/products', productRouter);
 
 module.exports = app;
