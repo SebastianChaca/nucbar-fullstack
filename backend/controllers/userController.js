@@ -1,8 +1,36 @@
-exports.getUsers = (req, res) => {
-  console.log('all users');
+const User = require('../models/userModel');
+exports.getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(201).json({
+      status: 'success',
+      results: users.length,
+      data: {
+        users,
+      },
+    });
+  } catch (error) {
+    res.status(404).json({
+      status: 'fail',
+      messege: err,
+    });
+  }
 };
-exports.createUser = (req, res) => {
-  console.log('create product');
+exports.createUser = async (req, res) => {
+  try {
+    const newUser = await User.create(req.body);
+    res.status(201).json({
+      status: 'success',
+      data: {
+        user: newUser,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      messege: err,
+    });
+  }
 };
 
 exports.getUser = (req, res) => {
