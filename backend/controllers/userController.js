@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const bcrypt = require('bcryptjs');
 exports.getUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -17,8 +18,12 @@ exports.getUsers = async (req, res) => {
   }
 };
 exports.createUser = async (req, res) => {
+  const user = new User({
+    email: req.body.email,
+    password: bcrypt.hashSync(req.body.password, 8),
+  });
   try {
-    const newUser = await User.create(req.body);
+    const newUser = await user.save();
     res.status(201).json({
       status: 'success',
       data: {
