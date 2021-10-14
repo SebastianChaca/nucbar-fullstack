@@ -17,6 +17,8 @@ exports.getUsers = async (req, res) => {
     });
   }
 };
+
+///holaaa
 exports.createUser = async (req, res) => {
   const user = new User({
     email: req.body.email,
