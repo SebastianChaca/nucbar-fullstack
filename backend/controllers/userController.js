@@ -1,8 +1,12 @@
 const User = require('../models/userModel');
-const bcrypt = require('bcryptjs');
+const catchAsync = require('../utils/catchAsync');
+const AppError = require('../utils/appError');
+const { generateToken } = require('../utils/apiAuth');
+
 exports.getUsers = async (req, res) => {
   try {
     const users = await User.find();
+
     res.status(201).json({
       status: 'success',
       results: users.length,
@@ -18,27 +22,22 @@ exports.getUsers = async (req, res) => {
   }
 };
 
-///holaaa
-exports.createUser = async (req, res) => {
-  const user = new User({
+exports.createUser = catchAsync(async (req, res) => {
+  const newUser = await User.create({
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8),
+    password: req.body.password,
+    name: req.body.name,
+    lastName: req.body.lastName,
   });
-  try {
-    const newUser = await user.save();
-    res.status(201).json({
-      status: 'success',
-      data: {
-        user: newUser,
-      },
-    });
-  } catch (err) {
-    res.status(404).json({
-      status: 'fail',
-      messege: err,
-    });
-  }
-};
+  const token = generateToken(newUser);
+  res.status(201).json({
+    status: 'success',
+    token,
+    data: {
+      user: newUser,
+    },
+  });
+});
 
 exports.getUser = (req, res) => {
   console.log('get product');
