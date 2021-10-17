@@ -141,3 +141,23 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   //login
   sendToken(user, 200, res);
 });
+
+exports.updatePassword = catchAsync(async (req, res, next) => {
+  // 1) Get user based on the token
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return next(new AppError('Por favor ingrese un email y/o password', 400));
+  }
+  const user = await User.findOne({ email }).select('+password');
+
+  //2) Check if posted current pass is correct
+  if (!(await user.correctPassword(password, user.password))) {
+    return next(new AppError('Contraseña incorrecta', 401));
+  }
+
+  //3)update
+  user.password = req.body.newPassword;
+  await user.save();
+  //login
+  sendToken(user, 200, res);
+});
