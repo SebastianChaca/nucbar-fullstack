@@ -1,8 +1,13 @@
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
-const { generateToken } = require('../utils/apiAuth');
-
+const filterObj = (obj, ...allowedFields) => {
+  const newObj = {};
+  Object.keys(obj).forEach((el) => {
+    if (allowedFields.includes(el)) newObj[el] = obj[el];
+  });
+  return newObj;
+};
 exports.getUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -22,29 +27,30 @@ exports.getUsers = async (req, res) => {
   }
 };
 
-exports.createUser = catchAsync(async (req, res) => {
-  const newUser = await User.create({
-    email: req.body.email,
-    password: req.body.password,
-    name: req.body.name,
-    lastName: req.body.lastName,
-  });
-  const token = generateToken(newUser);
-  res.status(201).json({
-    status: 'success',
-    token,
-    data: {
-      user: newUser,
-    },
-  });
-});
-
 exports.getUser = (req, res) => {
   console.log('get product');
 };
-exports.updateUser = (req, res) => {
-  console.log('update product');
-};
+exports.updateMe = catchAsync(async (req, res, next) => {
+  //1 create error if user post password data
+  if (req.body.password) {
+    return next(new AppError('Permiso denegado', 400));
+  }
+  //filtrar campos que no estan permitidos
+  const filteredBody = filterObj(req.body, 'name', 'email');
+
+  // 3) Update user document
+  const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
+    new: true,
+    runValidators: true,
+  });
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      user: updatedUser,
+    },
+  });
+});
 
 exports.deleteUser = (req, res) => {
   console.log('delete product');
