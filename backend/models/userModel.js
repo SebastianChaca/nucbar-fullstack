@@ -51,6 +51,11 @@ Userschema.pre('save', function (next) {
   this.password = bcrypt.hashSync(this.password, 10);
   next();
 });
+Userschema.pre('save', function (next) {
+  if (!this.isModified('password') || this.isNew) return next();
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
 
 Userschema.methods.correctPassword = function (
   candidatePassword,
@@ -78,8 +83,6 @@ Userschema.methods.createPasswordResetToken = function () {
     .createHash('sha256')
     .update(resetToken)
     .digest('hex');
-
-  console.log({ resetToken }, this.passwordResetToken);
 
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
