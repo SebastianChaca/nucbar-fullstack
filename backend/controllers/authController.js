@@ -2,7 +2,8 @@ const User = require('../models/userModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const { generateToken, verifyToken } = require('../utils/apiAuth');
-
+const sendEEmail = require('../utils/email');
+const sendEmail = require('../utils/email');
 exports.signup = catchAsync(async (req, res) => {
   const newUser = await User.create({
     email: req.body.email,
@@ -85,6 +86,32 @@ exports.forgotPassword = async (req, res, next) => {
   }
   const resetToken = user.createPasswordResetToken();
   await user.save({ validateBeforeSave: false });
+
+  const resetURL = `${req.protocol}://${req.get(
+    'host'
+  )}/users/resetPassword/${resetToken}`;
+  const message = `Olvido su pass, hace patch en ${resetURL}`;
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: 'Olvidaste tu pass',
+      message,
+    });
+    res.status(200).json({
+      status: 'success',
+      message: 'Enviamos el token al mail',
+    });
+  } catch (err) {
+    user.createPasswordResetToken = undefined;
+    user.createPasswordResetExpires = undefined;
+    await user.save({ validateBeforeSave: false });
+    return next(
+      new AppError(
+        'Hubo un error al mandar el email, intentelo de nuevo mas tarde',
+        500
+      )
+    );
+  }
 };
 
 exports.resetPassword = (req, res, next) => {};
