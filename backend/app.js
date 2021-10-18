@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
 const orderRouter = require('./routes/orderRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 //MIDDLEWARES
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 //ROUTES
+app.use('/auth', authRoutes);
 app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use('/orders', orderRouter);
