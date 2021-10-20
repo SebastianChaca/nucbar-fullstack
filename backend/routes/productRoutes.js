@@ -17,7 +17,7 @@ router
   .patch(productController.updateProduct)
   .delete(
     authController.protect,
-    authController.restrictTo('admin', 'super-admin'),
+    authController.restrictTo('admin'),
     productController.deleteProduct
   );
 

@@ -16,7 +16,12 @@ const sendToken = (user, statusCode, res) => {
   });
 };
 
-exports.signup = catchAsync(async (req, res) => {
+exports.signup = catchAsync(async (req, res, next) => {
+  const { email } = req.body;
+  const user = await User.findOne({ email });
+  if (user) {
+    return next(new AppError('El email ya está en uso', 400));
+  }
   const newUser = await User.create({
     email: req.body.email,
     password: req.body.password,
@@ -24,6 +29,7 @@ exports.signup = catchAsync(async (req, res) => {
     lastName: req.body.lastName,
     passwordChangedAt: req.body.passwordChangedAt,
   });
+
   sendToken(newUser, 201, res);
 });
 
@@ -71,11 +77,12 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
-      return next(
-        new AppError('No tiene permiso para realizar esta accion', 403)
-      );
-    }
+    console.log(req.user.role);
+    // if (!roles.includes(req.user.role)) {
+    //   return next(
+    //     new AppError('No tiene permiso para realizar esta accion', 403)
+    //   );
+    // }
     next();
   };
 };

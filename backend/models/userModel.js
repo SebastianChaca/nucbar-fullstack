@@ -17,6 +17,11 @@ const Userschema = mongoose.Schema(
       minlength: 8,
       select: false,
     },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user',
+    },
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
@@ -32,12 +37,6 @@ const Userschema = mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now(),
-    },
-    role: {
-      type: String,
-      enum: ['user', 'admin', 'super-admin'],
-      required: true,
-      default: 'user',
     },
   },
   {
@@ -90,7 +89,7 @@ Userschema.methods.createPasswordResetToken = function () {
 };
 
 Userschema.virtual('isAdmin').get(function () {
-  return this.role.includes('admin');
+  return this.role === 'admin';
 });
 
 module.exports = mongoose.model('User', Userschema);

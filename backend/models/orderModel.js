@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
 
-const Orderchema = mongoose.Schema({
+const Orderschema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'User',
   },
-  product: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Product',
-    required: true,
-  },
+  products: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product',
+      required: true,
+    },
+  ],
   status: {
     enum: ['Pending', 'Rejected', 'Completed'],
     type: String,
@@ -24,5 +26,14 @@ const Orderchema = mongoose.Schema({
     default: Date.now(),
   },
 });
-
-module.exports = mongoose.model('Order', Orderchema);
+Orderschema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'products',
+    select: ['name', 'price', 'stock', 'brand'],
+  }).populate({
+    path: 'user',
+    select: ['name', 'lastName', 'email'],
+  });
+  next();
+});
+module.exports = mongoose.model('Order', Orderschema);
