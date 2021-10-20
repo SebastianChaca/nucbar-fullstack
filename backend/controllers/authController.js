@@ -77,12 +77,11 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
-    console.log(req.user.role);
-    // if (!roles.includes(req.user.role)) {
-    //   return next(
-    //     new AppError('No tiene permiso para realizar esta accion', 403)
-    //   );
-    // }
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError('No tiene permiso para realizar esta accion', 403)
+      );
+    }
     next();
   };
 };

@@ -16,7 +16,10 @@ exports.getOrders = catchAsync(async (req, res, next) => {
   });
 });
 exports.createOrder = catchAsync(async (req, res, next) => {
-  const newOrder = await Order.create(req.body);
+  const newOrder = await Order.create({
+    user: req.user,
+    orderItems: req.body.orderItems,
+  });
   res.status(201).json({
     status: 'success',
     data: {
