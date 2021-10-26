@@ -1,16 +1,28 @@
 const express = require('express');
 const AppError = require('./utils/appError');
 const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
 const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
 const orderRouter = require('./routes/orderRoutes');
 const authRoutes = require('./routes/authRoutes');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
 
 const app = express();
+const limiter = rateLimit({
+  max: 50,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many request from this IP',
+});
 //MIDDLEWARES
-app.use(express.json());
+app.use(helmet());
+app.use('/', limiter);
 app.use(morgan('dev'));
-
+app.use(express.json({ limit: '10kb' }));
+app.use(mongoSanitize());
+app.use(xss());
 //ROUTES
 app.use('/auth', authRoutes);
 app.use('/users', userRouter);

@@ -38,6 +38,11 @@ const Userschema = mongoose.Schema(
       type: Date,
       default: Date.now(),
     },
+    active: {
+      type: Boolean,
+      default: true,
+      select: false,
+    },
   },
   {
     toJSON: { virtuals: true },

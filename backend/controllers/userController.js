@@ -27,9 +27,6 @@ exports.getUsers = async (req, res) => {
   }
 };
 
-exports.getUser = (req, res) => {
-  console.log('get product');
-};
 exports.updateMe = catchAsync(async (req, res, next) => {
   //1 create error if user post password data
   if (req.body.password) {
@@ -59,6 +56,10 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+
 exports.deleteUser = (req, res) => {
   console.log('delete product');
+};
+exports.getUser = (req, res) => {
+  console.log('get product');
 };

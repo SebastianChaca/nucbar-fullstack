@@ -31,6 +31,10 @@ const ProductSchema = mongoose.Schema(
       type: Number,
       required: [true, 'Product must have stock'],
     },
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+    },
   },
   {
     toJSON: { virtuals: true },
