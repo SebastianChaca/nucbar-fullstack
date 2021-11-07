@@ -34,6 +34,9 @@ const ProductSchema = mongoose.Schema(
       type: Number,
       required: [true, 'Product must have stock'],
     },
+    rate: {
+      type: Number,
+    },
     createdAt: {
       type: Date,
       default: Date.now(),

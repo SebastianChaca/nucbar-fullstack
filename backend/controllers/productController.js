@@ -20,7 +20,7 @@ exports.getProducts = catchAsync(async (req, res, next) => {
     status: 'success',
     results: products.length,
     data: {
-      product: products,
+      products: products,
     },
   });
 });

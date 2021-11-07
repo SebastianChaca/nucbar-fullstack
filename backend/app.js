@@ -9,6 +9,7 @@ const authRoutes = require('./routes/authRoutes');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
+const cors = require('cors');
 
 const app = express();
 const limiter = rateLimit({
@@ -16,6 +17,8 @@ const limiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   message: 'Too many request from this IP',
 });
+//CORS
+app.use(cors());
 //MIDDLEWARES
 app.use(helmet());
 app.use('/', limiter);
