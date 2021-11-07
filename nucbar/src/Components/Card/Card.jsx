@@ -7,6 +7,7 @@ import {
   LinkOverlay,
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
+import ProductImage from '../ProductImage/ProductImage';
 
 export const Card = ({
   index,
@@ -44,17 +45,8 @@ export const Card = ({
         _hover={{ boxShadow: '5px 5px 17px 1px rgba(181,78,159,0.36)' }}
       >
         <LinkOverlay as={ReachLink} to={`/product/${product?.id}`}>
-          <Image
-            m="auto"
-            boxSize="220px"
-            objectFit="contain"
-            src={
-              product
-                ? product.image
-                : 'https://hogarcenter.com.ar/imagenes_productos/default.png'
-            }
-            mb="5px"
-          />
+          <ProductImage product={product} boxSize="220px" />
+
           <hr />
           <Box mt="5px" mb="10px">
             <Text textAlign="center" fontSize="18px">

@@ -2,6 +2,7 @@ import { Image } from '@chakra-ui/image';
 import { Flex } from '@chakra-ui/layout';
 import BuyCard from './BuyCard';
 import PriceDetail from './PriceDetail';
+import ProductImage from '../ProductImage/ProductImage';
 
 const ProductDetail = ({ product }) => {
   return (
@@ -14,16 +15,7 @@ const ProductDetail = ({ product }) => {
       boxShadow="md"
       justifyContent="space-around"
     >
-      <Image
-        boxSize="320px"
-        objectFit="contain"
-        src={
-          product
-            ? product.image
-            : 'https://hogarcenter.com.ar/imagenes_productos/default.png'
-        }
-        mb="5px"
-      />
+      <ProductImage product={product} boxSize="320px" />
       <PriceDetail product={product} />
       <BuyCard product={product} />
     </Flex>
