@@ -18,8 +18,8 @@ const Section = ({ loading, section, products }) => {
         endColor="orange.500"
         isLoaded={!loading}
       >
-        <Heading mb="20px" w="200px">
-          {section?.titulo}
+        <Heading mb="20px" w="350px">
+          {section}
         </Heading>
       </Skeleton>
 
