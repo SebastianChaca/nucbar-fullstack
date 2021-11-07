@@ -12,7 +12,9 @@ const Products = () => {
   const { category } = useParams();
   const { products } = useSelector(state => state.products);
 
-  const filteredProducts = products?.filter(p => p.categoria === category);
+  const filteredProducts = products?.data?.products.filter(
+    p => p.category === category
+  );
 
   if (!products) {
     return <h1>No Hay productos</h1>;

@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 const Product = () => {
   const { id } = useParams();
   const { products } = useSelector(state => state.products);
-  const selectedProduct = products.find(p => p.id === id);
+  const selectedProduct = products?.data?.products.find(p => p.id === id);
 
   return (
-    <div>
+    <>
       <ProductDetail product={selectedProduct} />
-    </div>
+    </>
   );
 };
 

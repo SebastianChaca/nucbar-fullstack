@@ -2,7 +2,6 @@ import { Text, Flex } from '@chakra-ui/layout';
 import StarsRate from '../StarsRate/StarsRate';
 
 const PriceDetail = ({ product }) => {
-  console.log(product);
   if (!product) {
     return <h1>Producto no disponible</h1>;
   }

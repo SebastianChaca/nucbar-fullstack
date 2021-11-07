@@ -51,7 +51,7 @@ const Section = ({ loading, section, products }) => {
       </Grid>
       {!loading && (
         <Box m="auto">
-          <Link to={`products/${section?.categoria}`}>
+          <Link to={`products/${section}`}>
             <Button
               color="nucba.form"
               bg="nucba.primary"

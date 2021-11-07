@@ -20,8 +20,6 @@ const ProductDetail = ({ product }) => {
         src={
           product
             ? product.image
-              ? product.image.url
-              : product.imageFromDash
             : 'https://hogarcenter.com.ar/imagenes_productos/default.png'
         }
         mb="5px"
