@@ -33,7 +33,7 @@ export const publicRoutes = [
   {
     id: uuidv4(),
     exact: false,
-    path: '/cartssss',
+    path: '/cart',
     component: <ShoppingCart />,
   },
 

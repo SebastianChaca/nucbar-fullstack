@@ -1,11 +1,4 @@
-import {
-  Box,
-  Text,
-  Image,
-  Flex,
-  Skeleton,
-  LinkOverlay,
-} from '@chakra-ui/react';
+import { Box, Text, Flex, Skeleton, LinkOverlay } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 import ProductImage from '../ProductImage/ProductImage';
 
