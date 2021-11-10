@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, Button, useToast, Box, Spinner } from '@chakra-ui/react';
 import { Link, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+
 export const TextHover = ({ children, link, mt, display }) => {
   return (
     <Link to={link}>
@@ -43,25 +43,7 @@ export const TextHoverDrawer = ({ children, link, onClose }) => {
     </Button>
   );
 };
-export const LogBtn = ({ display }) => {
-  const { token } = useSelector(state => state.user);
 
-  return (
-    <Link to="/login">
-      <Button
-        color="nucba.form"
-        pb="4px"
-        display={display}
-        variant="link"
-        mr="15px"
-        mt="2px"
-        _focus={{ outline: 'none' }}
-      >
-        <Text>{token ? 'Cerrar sesión' : 'Ingresá'}</Text>
-      </Button>
-    </Link>
-  );
-};
 export const FormBtn = ({ children, isValid, isDirty, isLoading }) => {
   return (
     <Button

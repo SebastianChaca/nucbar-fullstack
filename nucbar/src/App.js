@@ -6,8 +6,8 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './Redux/Store/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Layout } from './Routes/Layout/Layout';
-
 import { theme } from './Chakra/Theme';
+
 function App() {
   return (
     <Provider store={store}>

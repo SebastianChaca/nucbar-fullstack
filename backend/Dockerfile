@@ -1,12 +1,12 @@
-FROM node:16.4.1
+# FROM node:16.4.1
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY package*.json .
-RUN npm install
-COPY . .
+# COPY package*.json .
+# RUN npm install
+# COPY . .
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
 
 # How to build and run it
 # sudo docker build -t app .

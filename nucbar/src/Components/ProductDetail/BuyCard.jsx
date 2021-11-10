@@ -1,6 +1,12 @@
 import { Box, Flex, Text, Button } from '@chakra-ui/react';
-
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../Redux/Actions/cartActions';
 function BuyCard({ product }) {
+  const dispatch = useDispatch();
+  console.log(product);
+  const handleCart = () => {
+    dispatch(addItem(product));
+  };
   if (!product) {
     return <h1>Productos no disponibles</h1>;
   }
@@ -38,6 +44,7 @@ function BuyCard({ product }) {
           fontSize="18px"
           p="0px 24px"
           h="48px"
+          onClick={handleCart}
         >
           Agregar al carrito
         </Button>

@@ -14,7 +14,7 @@ const PriceDetail = ({ product }) => {
       w="400px"
     >
       <Text fontWeight="600" fontSize="25px" mb="10px">
-        {product?.title}
+        {product?.name}
       </Text>
       <StarsRate rate={product.rate} />
       <Text fontWeight="400" fontSize="35px" my="10px">
