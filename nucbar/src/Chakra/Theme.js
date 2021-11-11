@@ -24,4 +24,41 @@ export const theme = extendTheme({
       grisDos: '#999999',
     },
   },
+  textStyles: {
+    pagetitle: {
+      fontSize: '28px',
+      fontWeight: '700',
+      lineHeight: '42px',
+    },
+    title: {
+      fontSize: '22px',
+      fontWeight: '700',
+      lineHeight: '33px',
+    },
+    subtitle: {
+      fontSize: '18px',
+      fontWeight: '600',
+      lineHeight: '27px',
+    },
+    regular: {
+      fontSize: '14px',
+      fontWeight: '400',
+      lineHeight: '21px',
+    },
+    semiBold: {
+      fontSize: '14px',
+      fontWeight: '600',
+      lineHeight: '21px',
+    },
+    captionRegular: {
+      fontSize: '12px',
+      fontWeight: '400',
+      lineHeight: '18px',
+    },
+    captionSemiBold: {
+      fontSize: '12px',
+      fontWeight: '600',
+      lineHeight: '18px',
+    },
+  },
 });

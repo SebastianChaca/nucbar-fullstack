@@ -1,11 +1,13 @@
 import { Box, Flex, Text, Button } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../Redux/Actions/cartActions';
+import { useHistory } from 'react-router-dom';
 function BuyCard({ product }) {
   const dispatch = useDispatch();
-  console.log(product);
+  const history = useHistory();
   const handleCart = () => {
     dispatch(addItem(product));
+    history.push('/cart');
   };
   if (!product) {
     return <h1>Productos no disponibles</h1>;
@@ -18,7 +20,7 @@ function BuyCard({ product }) {
       lineHeight="40px"
       w="300px"
     >
-      {product.stock > 0 && <Text fontWeight="600">Stock disponibe </Text>}
+      {product.stock > 0 && <Text textStyle="semiBold">Stock disponibe </Text>}
       <Flex>
         <Text mr="5px">Cantidad: dropdown</Text>
         <Text color="nucba.grisDos" fontSize="12px">
@@ -29,8 +31,7 @@ function BuyCard({ product }) {
         <Button
           bg="nucba.primary"
           color="nucba.form"
-          fontWeight="600"
-          fontSize="18px"
+          textStyle="title"
           p="0px 24px"
           h="48px"
           my="10px"
@@ -40,8 +41,7 @@ function BuyCard({ product }) {
         <Button
           bg="nucba.fourth"
           color="nucba.primary"
-          fontWeight="600"
-          fontSize="18px"
+          textStyle="title"
           p="0px 24px"
           h="48px"
           onClick={handleCart}

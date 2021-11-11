@@ -17,7 +17,7 @@ const QuantityComponent = () => {
       <Box color="nucba.fourth">
         <BiMinus fontSize="20px" />
       </Box>
-      <Text>1</Text>
+      <Text textStyle="regular">1</Text>
       <Box color="nucba.third">
         <BsPlus fontSize="20px" />
       </Box>

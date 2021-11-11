@@ -42,8 +42,8 @@ export const Card = ({
 
           <hr />
           <Box mt="5px" mb="10px">
-            <Text textAlign="center" fontSize="18px">
-              {product && product.title}
+            <Text textAlign="center" textStyle="subtitle">
+              {product && product.name}
             </Text>
             <Box ml="15px" mt="7px">
               <Flex alignItems="baseline">
@@ -54,17 +54,22 @@ export const Card = ({
                     : product?.price}
                 </Text>
                 {product && product.descuento && (
-                  <Text fontSize="10px" as="s" color="gray.500" mx="5px">
+                  <Text
+                    as="s"
+                    color="nucba.grisDos"
+                    mx="5px"
+                    textStyle="captionSemiBold"
+                  >
                     ${product && product.price}
                   </Text>
                 )}
                 {product && product.descuento && (
-                  <Text fontSize="13px" color="pink.500" fontWeight="500">
+                  <Text color="nucba.third" textStyle="semiBold">
                     10% Off
                   </Text>
                 )}
               </Flex>
-              <Text fontSize="sm" color="gray.500" mt="2px">
+              <Text textStyle="regular" color="nucba.grisDos" mt="2px">
                 {product && product.shortDescription}
               </Text>
             </Box>

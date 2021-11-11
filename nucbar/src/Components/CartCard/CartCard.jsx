@@ -1,8 +1,9 @@
-import { Flex, Text, Box, Image } from '@chakra-ui/react';
+import { Flex, Text, Box } from '@chakra-ui/react';
 import React from 'react';
+import ProductImage from '../ProductImage/ProductImage';
 import QuantityComponent from './QuantityComponent';
 
-const CartCard = () => {
+const CartCard = ({ product }) => {
   return (
     <Box pb="10px">
       <Flex
@@ -13,16 +14,14 @@ const CartCard = () => {
         my="40px"
       >
         <Flex alignItems="center">
-          <Image
-            boxSize="120px"
-            objectFit="contain"
-            src="https://res.cloudinary.com/dxexw8kqg/image/upload/v1618110791/chupi3_ea3d326f02.png"
-            mr="10px"
-          />
-          <Text fontSize="18px">Whisky Mccallan 18años</Text>
+          <ProductImage boxSize="120" product={product} />
+
+          <Text textStyle="title" ml="15px">
+            {product?.name}
+          </Text>
         </Flex>
         <QuantityComponent />
-        <Text fontSize="18px">$50000</Text>
+        <Text textStyle="subtitle">${product?.price}</Text>
       </Flex>
       <hr />
     </Box>

@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Flex, Box } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import React from 'react';
 import CartCard from '../../Components/CartCard/CartCard';
 import CartTotal from '../../Components/CartCard/CartTotal';
 import CartTotalFixed from '../../Components/CartCard/CartTotalFixed';
-
+import { useSelector } from 'react-redux';
 const ShoppingCart = () => {
   const [heigth, setHeight] = useState();
-  const products = 8;
-  const productsLenght = 8;
+  const { cartItems } = useSelector(state => state.cart);
+
   useEffect(() => {
-    if (products) {
-      setHeight(productsLenght * 160);
+    if (cartItems) {
+      setHeight(cartItems.length * 50);
     }
-  }, []);
+  }, [cartItems]);
   useEffect(() => {
     window.addEventListener('scroll', () => {
       setHeight(window.pageYOffset);
@@ -35,16 +35,11 @@ const ShoppingCart = () => {
         mb="50px"
         w="1300px"
       >
-        <CartCard />
-        <CartCard />
-        <CartCard />
-        <CartCard />
-        <CartCard />
-        <CartCard />
-        <CartCard />
-        <CartCard />
+        {cartItems.map(item => {
+          return <CartCard product={item} key={item.id} />;
+        })}
         <CartTotal />
-        {productsLenght > 2 && heigth <= productsLenght * 160 && (
+        {cartItems.length > 2 && heigth <= cartItems.length * 50 && (
           <CartTotalFixed />
         )}
       </Flex>

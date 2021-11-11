@@ -13,14 +13,14 @@ const PriceDetail = ({ product }) => {
       flexDir="column"
       w="400px"
     >
-      <Text fontWeight="600" fontSize="25px" mb="10px">
+      <Text textStyle="pagetitle" mb="10px">
         {product?.name}
       </Text>
       <StarsRate rate={product.rate} />
-      <Text fontWeight="400" fontSize="35px" my="10px">
+      <Text textStyle="title" my="10px">
         ${product?.price}
       </Text>
-      <Text fontWeight="600" fontSize="15px" color="nucba.grisUno" mb="10px">
+      <Text textStyle="regular" color="nucba.grisUno" mb="10px">
         {product?.description}
       </Text>
     </Flex>

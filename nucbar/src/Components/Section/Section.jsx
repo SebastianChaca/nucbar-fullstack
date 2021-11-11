@@ -1,5 +1,13 @@
 import { useState } from 'react';
-import { Heading, Flex, Grid, Box, Skeleton, Button } from '@chakra-ui/react';
+import {
+  Heading,
+  Flex,
+  Grid,
+  Box,
+  Skeleton,
+  Button,
+  Text,
+} from '@chakra-ui/react';
 import { Card } from '../Card/Card';
 import { Link } from 'react-router-dom';
 
@@ -18,9 +26,9 @@ const Section = ({ loading, section, products }) => {
         endColor="orange.500"
         isLoaded={!loading}
       >
-        <Heading mb="20px" w="350px">
+        <Text mb="20px" w="350px" textStyle="pagetitle">
           {section}
-        </Heading>
+        </Text>
       </Skeleton>
 
       <Grid
