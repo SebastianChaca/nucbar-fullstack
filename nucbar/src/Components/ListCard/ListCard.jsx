@@ -93,7 +93,7 @@ const ListCard = ({ product, index }) => {
           position="absolute"
           m="5px"
           color="nucba.primary"
-          _hover={{ color: 'nucba.hoverElement' }}
+          _hover={{ color: 'nucba.third' }}
           bg="transparent"
           top="5px"
           left="92%"

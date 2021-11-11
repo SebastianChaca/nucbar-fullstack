@@ -69,7 +69,7 @@ export const Card = ({
                   </Text>
                 )}
               </Flex>
-              <Text textStyle="regular" color="nucba.grisDos" mt="2px">
+              <Text textStyle="regular" color="nucba.grisUno" mt="2px">
                 {product && product.shortDescription}
               </Text>
             </Box>
