@@ -1,13 +1,5 @@
 import { useState } from 'react';
-import {
-  Heading,
-  Flex,
-  Grid,
-  Box,
-  Skeleton,
-  Button,
-  Text,
-} from '@chakra-ui/react';
+import { Flex, Grid, Box, Skeleton, Button, Text } from '@chakra-ui/react';
 import { Card } from '../Card/Card';
 import { Link } from 'react-router-dom';
 
@@ -45,6 +37,7 @@ const Section = ({ loading, section, products }) => {
           ? products.slice(0, 5).map((product, index) => {
               return (
                 <Card
+                  key={product.id}
                   index={index}
                   showBtn={showBtn}
                   setShowBtn={setShowBtn}
@@ -54,7 +47,7 @@ const Section = ({ loading, section, products }) => {
               );
             })
           : skeletonCards.map((c, index) => {
-              return <Card loading={loading} index={index} />;
+              return <Card loading={loading} index={index} key={index} />;
             })}
       </Grid>
       {!loading && (

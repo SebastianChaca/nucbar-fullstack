@@ -29,3 +29,21 @@ export const removeItemFromCart = (cartItems, itemToRemove) => {
       : cartItem;
   });
 };
+
+export const getTotals = cartItems => {
+  let { total, quantity } = cartItems.reduce(
+    (cartTotal, cartItem) => {
+      const { price, quantity } = cartItem;
+      const itemTotal = price * quantity;
+      cartTotal.total += itemTotal;
+      cartTotal.quantity += quantity;
+      return cartTotal;
+    },
+    {
+      total: 0,
+      quantity: 0,
+    }
+  );
+  total = parseFloat(total.toFixed(2));
+  return { total, quantity };
+};

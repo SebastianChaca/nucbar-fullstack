@@ -22,8 +22,9 @@ export const Home = () => {
     <>
       <MemoGallery />
       {products ? (
-        categories.map(cat => (
+        categories.map((cat, index) => (
           <Section
+            key={index}
             section={cat}
             products={filterProductsByCategory(products?.data?.products, cat)}
           />

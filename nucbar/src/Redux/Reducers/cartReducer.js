@@ -1,25 +1,22 @@
 import {
-  TOGGLE_CART_HIDDEN,
   ADD_ITEM,
   REMOVE_ITEM,
   CLEAR_CART,
+  GET_TOTALS,
 } from '../Actions/cartActions';
 
-import { addItemToCart, removeItemFromCart } from '../Utils/cartUtils';
+import {
+  addItemToCart,
+  removeItemFromCart,
+  getTotals,
+} from '../Utils/cartUtils';
 
 const INITIAL_STATE = {
-  hidden: true,
   cartItems: [],
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case TOGGLE_CART_HIDDEN:
-      return {
-        ...state,
-        hidden: !state.hidden,
-      };
-
     case ADD_ITEM:
       return {
         ...state,
@@ -37,7 +34,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cartItems: [],
       };
-
+    case GET_TOTALS:
+      return {
+        ...state,
+        total: getTotals(state.cartItems),
+      };
     default:
       return state;
   }

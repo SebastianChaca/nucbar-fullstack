@@ -1,7 +1,6 @@
 import { Box, Flex, Text } from '@chakra-ui/layout';
-import CartTotal from './CartTotal';
 
-const CartTotalFixed = () => {
+const CartTotalFixed = ({ total }) => {
   return (
     <Box
       bottom="10px"
@@ -14,7 +13,7 @@ const CartTotalFixed = () => {
     >
       <Flex width="100%" justifyContent="right">
         <Text fontSize="20px" fontWeight="600">
-          Total : $1000
+          Total : ${total}
         </Text>
       </Flex>
     </Box>
