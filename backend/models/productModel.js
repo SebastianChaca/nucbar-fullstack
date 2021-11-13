@@ -41,6 +41,9 @@ const ProductSchema = mongoose.Schema(
       type: Date,
       default: Date.now(),
     },
+    descuento: {
+      type: Boolean,
+    },
   },
   {
     toJSON: { virtuals: true },
