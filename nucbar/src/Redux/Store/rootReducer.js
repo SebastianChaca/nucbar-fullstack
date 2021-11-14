@@ -8,7 +8,7 @@ import sectionReducer from '../Reducers/sectionReducers';
 const persistConfig = {
   key: 'root',
   storage: storage,
-  whitelist: ['cart'],
+  whitelist: ['cart', 'user'],
 };
 
 const rootReducer = combineReducers({

@@ -8,6 +8,7 @@ const useFetch = () => {
   const dispatch = useDispatch();
   const fetchData = async (method, url, action, data) => {
     setLoading(true);
+
     try {
       if (!response && !error) {
         const response = await axios({ method, url, data });
@@ -15,7 +16,7 @@ const useFetch = () => {
         setResponse(response.data);
       }
     } catch (error) {
-      setError(error.message);
+      setError(error.response.data.message);
     } finally {
       setLoading(false);
     }

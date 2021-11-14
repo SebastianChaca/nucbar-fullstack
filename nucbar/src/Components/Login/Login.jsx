@@ -10,7 +10,7 @@ import {
 } from '../../Utils/validator';
 import { url } from '../../Utils/apiUrl';
 import { LoginForm, RegisterForm } from '../../Utils/initialForms';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, Text } from '@chakra-ui/react';
 import FormContainer from './FormContainer';
 import { LinkText } from './LinkText';
 import useFetch from '../../Hooks/useFetch';
@@ -42,26 +42,29 @@ const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     if (loginMode) {
-      fetchData('post', `${url}/auth/local`, setCurrentUser, {
-        identifier: email.value,
+      fetchData('post', `${url}/auth/login`, setCurrentUser, {
+        email: email.value,
         password: password.value,
       });
     } else {
-      fetchData('post', `${url}/auth/local/register`, setCurrentUser, {
-        username: name.value,
+      fetchData('post', `${url}/auth/signup`, setCurrentUser, {
+        name: name.value,
         email: email.value,
         password: password.value,
       });
     }
   };
+
   return (
     <>
-      {!response && error && (
-        <Box textAlign="center" mt="20px" mb="20px" color="red">
-          Se produjo un errro, intentalo de nuevo.
-        </Box>
-      )}
       <FormContainer>
+        {!response && error && (
+          <Box textAlign="center" m="0px">
+            <Text textStyle="captionRegular" m="0px" color="red">
+              {error}
+            </Text>
+          </Box>
+        )}
         {!loginMode && (
           <InputCustom
             type="text"
@@ -101,16 +104,15 @@ const Login = () => {
           />
         )}
         <Button
-          bg="nucba.primary"
+          variant="primary"
           mt="25px"
           isFullWidth
           color="#ffff"
           disabled={!formState.isValid}
           onClick={handleSubmit}
           isLoading={loading}
-          _hover={{ bg: 'nucba.hover' }}
         >
-          Iniciar sesión
+          {loginMode ? 'Inicia sesión' : 'Registrate'}
         </Button>
       </FormContainer>
       <LinkText loginMode={loginMode} handleMode={handleFormMode} />

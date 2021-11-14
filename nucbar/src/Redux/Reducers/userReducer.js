@@ -12,8 +12,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case SET_CURRENT_USER:
       return {
         ...state,
-        currentUser: action.payload.user,
-        token: action.payload.jwt,
+        currentUser: action.payload.data.user,
+        token: action.payload.token,
         loading: false,
       };
 

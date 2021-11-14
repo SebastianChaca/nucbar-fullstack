@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { publicRoutes } from '../Routes';
 export const Public = () => {
-  const currentUser = useSelector(state => state.user.currentUser);
+  const currentUser = useSelector(state => state.user.token);
   const mapRoutes = routes => {
     return routes.map(route => {
       if (route.path === '/login') {
