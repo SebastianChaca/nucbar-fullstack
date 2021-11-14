@@ -81,7 +81,9 @@ const Products = () => {
           </Box>
           <Box>
             {filteredProducts.map((product, index) => {
-              return <ListCard product={product} index={index} />;
+              return (
+                <ListCard product={product} index={index} key={product.id} />
+              );
             })}
           </Box>
         </Flex>

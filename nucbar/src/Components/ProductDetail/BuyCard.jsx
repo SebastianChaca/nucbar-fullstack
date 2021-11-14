@@ -2,6 +2,7 @@ import { Box, Flex, Text, Button } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../Redux/Actions/cartActions';
 import { useHistory } from 'react-router-dom';
+import StockDropdown from './StockDropdown';
 function BuyCard({ product }) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -21,12 +22,9 @@ function BuyCard({ product }) {
       w="300px"
     >
       {product.stock > 0 && <Text textStyle="semiBold">Stock disponibe </Text>}
-      <Flex>
-        <Text mr="5px">Cantidad: dropdown</Text>
-        <Text color="nucba.grisDos" fontSize="12px">
-          ({product.stock} disponibles )
-        </Text>
-      </Flex>
+
+      <StockDropdown product={product} />
+
       <Flex flexDir="column" mt="25px">
         <Button
           variant="primary"

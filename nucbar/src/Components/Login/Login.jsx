@@ -6,7 +6,6 @@ import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
   VALIDATOR_MAXLENGTH,
-  VALIDATOR_PASSWORD,
 } from '../../Utils/validator';
 import { url } from '../../Utils/apiUrl';
 import { LoginForm, RegisterForm } from '../../Utils/initialForms';
@@ -92,17 +91,7 @@ const Login = () => {
           handlePasswordVisibility={handlePasswordVisibility}
           showPassword={showPassword}
         />
-        {!loginMode && (
-          <InputCustom
-            type={showPassword ? 'text' : 'password'}
-            id="confirmPassword"
-            label="Confirma la password"
-            onInput={inputHandler}
-            validators={[VALIDATOR_PASSWORD(password.value)]}
-            handlePasswordVisibility={handlePasswordVisibility}
-            showPassword={showPassword}
-          />
-        )}
+
         <Button
           variant="primary"
           mt="25px"

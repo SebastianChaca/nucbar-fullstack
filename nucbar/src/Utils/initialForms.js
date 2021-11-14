@@ -9,10 +9,6 @@ export const LoginForm = {
 export const RegisterForm = inputs => {
   return {
     ...inputs,
-    confirmPassword: {
-      value: '',
-      validate: { isValid: false },
-    },
 
     name: { value: '', validate: { isValid: false } },
   };
