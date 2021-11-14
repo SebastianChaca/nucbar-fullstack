@@ -20,7 +20,7 @@ const CartCard = ({ product }) => {
             {product?.name}
           </Text>
         </Flex>
-        <QuantityComponent />
+        <QuantityComponent product={product} />
         <Text textStyle="subtitle">${product?.price}</Text>
       </Flex>
       <hr />

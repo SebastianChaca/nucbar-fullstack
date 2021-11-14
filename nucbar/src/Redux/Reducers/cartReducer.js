@@ -37,7 +37,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case GET_TOTALS:
       return {
         ...state,
-        total: getTotals(state.cartItems),
+        totals: getTotals(state.cartItems),
       };
     default:
       return state;

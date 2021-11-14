@@ -6,12 +6,12 @@ import { getTotals } from '../../Redux/Actions/cartActions';
 
 const Totals = () => {
   const [heigth, setHeight] = useState();
-  const { total, cartItems } = useSelector(state => state.cart);
+  const { totals, cartItems } = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTotals());
-  }, [dispatch]);
+  }, [cartItems, dispatch]);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -22,9 +22,9 @@ const Totals = () => {
 
   return (
     <>
-      <CartTotal total={total?.total} />
+      <CartTotal total={totals?.total} />
       {cartItems.length > 2 && heigth <= cartItems.length * 100 && (
-        <CartTotalFixed total={total?.total} />
+        <CartTotalFixed total={totals?.total} />
       )}
     </>
   );

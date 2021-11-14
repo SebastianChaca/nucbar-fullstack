@@ -1,9 +1,42 @@
-import { Flex, Text, Box } from '@chakra-ui/layout';
+import { Flex, Text, Button } from '@chakra-ui/react';
 import React from 'react';
 import { BsPlus } from 'react-icons/bs';
 import { BiMinus } from 'react-icons/bi';
+import { useDispatch } from 'react-redux';
+import { addItem, removeItem } from '../../Redux/Actions/cartActions';
+const QuantityComponent = ({ product }) => {
+  const dispatch = useDispatch();
 
-const QuantityComponent = () => {
+  const handleSumItem = () => {
+    dispatch(addItem(product.id));
+  };
+  const handleMinusItem = () => {
+    dispatch(removeItem(product.id));
+  };
+
+  const Btn = ({ children, onClick }) => {
+    return (
+      <Button
+        color="nucba.fourth"
+        bg="transparent"
+        _hover={{ bg: 'transparent' }}
+        _active={{
+          bg: 'transparent',
+          color: 'nucba.primary',
+          transform: 'scale(1.1)',
+        }}
+        _focus={{
+          boxShadow: 'none',
+        }}
+        onClick={() => onClick()}
+        p={0}
+        m={0}
+      >
+        {children}
+      </Button>
+    );
+  };
+
   return (
     <Flex
       borderRadius="8px"
@@ -14,13 +47,15 @@ const QuantityComponent = () => {
       h="40px"
       px="15px"
     >
-      <Box color="nucba.fourth">
+      <Btn onClick={handleMinusItem}>
         <BiMinus fontSize="20px" />
-      </Box>
-      <Text textStyle="regular">1</Text>
-      <Box color="nucba.third">
+      </Btn>
+
+      <Text textStyle="regular">{product.quantity}</Text>
+
+      <Btn onClick={handleSumItem}>
         <BsPlus fontSize="20px" />
-      </Box>
+      </Btn>
     </Flex>
   );
 };

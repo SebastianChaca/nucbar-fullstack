@@ -29,8 +29,7 @@ function BuyCard({ product }) {
       </Flex>
       <Flex flexDir="column" mt="25px">
         <Button
-          bg="nucba.primary"
-          color="nucba.form"
+          variant="primary"
           textStyle="title"
           p="0px 24px"
           h="48px"

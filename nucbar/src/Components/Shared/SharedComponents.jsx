@@ -2,6 +2,16 @@ import React from 'react';
 import { Text, Button, useToast, Box, Spinner } from '@chakra-ui/react';
 import { Link, useHistory } from 'react-router-dom';
 
+export const GoHome = () => {
+  return (
+    <Link to="/">
+      <Button variant="primary" mt="10px">
+        Ir al incio
+      </Button>
+    </Link>
+  );
+};
+
 export const TextHover = ({ children, link, mt, display }) => {
   return (
     <Link to={link}>
@@ -88,19 +98,7 @@ export const LoadingSpinner = () => {
   );
 };
 
-export const EmptyData = () => {
-  return (
-    <Box m="auto" textAlign="center">
-      <Text fontSize="xl" my="30px">
-        No se encontraron operaciones
-      </Text>
-      <Link to="/crear">
-        <Button colorScheme="teal">Realizar una operación</Button>
-      </Link>
-    </Box>
-  );
-};
-export const ErroData = ({ children }) => {
+export const ErrorData = ({ children }) => {
   return (
     <Text textAlign="center" fontSize="2xl" mt="30px">
       {children}

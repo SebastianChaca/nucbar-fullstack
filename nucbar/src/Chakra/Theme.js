@@ -55,4 +55,17 @@ export const theme = extendTheme({
       lineHeight: '18px',
     },
   },
+  components: {
+    Button: {
+      variants: {
+        primary: {
+          bg: 'nucba.primary',
+          color: 'nucba.form',
+          _hover: {
+            bg: 'nucba.hover',
+          },
+        },
+      },
+    },
+  },
 });

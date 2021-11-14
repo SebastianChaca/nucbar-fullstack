@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import LogBtn from './LogBtn';
 import { FiShoppingCart } from 'react-icons/fi';
 const RightBtns = () => {
-  const { cartItems } = useSelector(state => state.cart);
+  const cart = useSelector(state => state.cart);
 
   return (
     <Flex>
@@ -20,7 +20,7 @@ const RightBtns = () => {
             bottom={{ base: '15px', sm: '15px', md: '16px', lg: '16px' }}
             left="17px"
           >
-            <Text fontSize="11px">{cartItems.length}</Text>
+            <Text fontSize="11px">{cart.total.quantity}</Text>
           </Box>
         </Flex>
       </Link>
