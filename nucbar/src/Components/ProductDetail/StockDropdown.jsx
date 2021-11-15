@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import {
   Menu,
   MenuButton,
@@ -8,30 +8,49 @@ import {
   Flex,
   Text,
   Button,
+  MenuOptionGroup,
+  MenuItemOption,
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 const StockDropdown = ({ product }) => {
+  const [value, setValue] = useState(1);
+  const [open, setOpen] = useState(false);
+  const handleClick = value => {
+    setValue(value);
+  };
+  const handleIcon = () => {
+    console.log('ola');
+  };
+  // console.log(open);
   const DropDown = () => {
     return (
       <Menu>
-        <MenuButton bg="none" _hover={{ bg: 'none' }} mr="5px" p={0}>
+        <MenuButton
+          bg="none"
+          _hover={{ bg: 'none' }}
+          mr="5px"
+          p={0}
+          onClick={() => handleIcon()}
+        >
           <Flex alignItems="center">
-            <Text textStyle="semiBold">1 unidad</Text>
+            <Text textStyle="semiBold">{value} unidad</Text>
             <ChevronDownIcon color="nucba.primary" />
           </Flex>
         </MenuButton>
         <MenuList>
-          {[...Array(product.stock).keys()].map((item, index) => {
-            return (
-              <MenuItem
-                style={{ fontSize: 20 }}
-                key={product.id}
-                value={item + 1}
-              >
-                {item + 1} unidad
-              </MenuItem>
-            );
-          })}
+          <MenuOptionGroup>
+            {[...Array(product.stock).keys()].map((item, index) => {
+              return (
+                <MenuItemOption
+                  key={product.id}
+                  value={item + 1}
+                  onClick={e => handleClick(item + 1)}
+                >
+                  {item + 1} unidad
+                </MenuItemOption>
+              );
+            })}
+          </MenuOptionGroup>
         </MenuList>
       </Menu>
     );

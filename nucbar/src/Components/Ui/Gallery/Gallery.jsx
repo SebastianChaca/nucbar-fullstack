@@ -42,31 +42,27 @@ const Gallery = () => {
       setCurrent(current - 1);
     }
   };
-  const Slideshow = ({ children }) => (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
-  );
 
   return (
-    <Box position="relative" w="100%">
-      <Slideshow>
-        <Box bg="nucba.primary">
-          <Image
-            src={array[current].src}
-            w="100%"
-            h="360px"
-            objectFit="cover"
-            className="active"
-          />
-        </Box>
-      </Slideshow>
+    <Box position="relative" w="100%" bg="black">
+      <AnimatePresence>
+        <motion.img
+          style={{ objectFit: 'cover', width: '100%', maxHeight: '300px' }}
+          key={array[current].src}
+          src={array[current].src}
+          initial={{
+            x: 1000,
+            opacity: 0,
+            maxHeight: '300px',
+          }}
+          animate={{ x: 0, opacity: 1, y: 0, heigth: '300px' }}
+          transition={{
+            opacity: { duration: 0.3 },
+          }}
+          exit={{ x: -1000, opacity: 0 }}
+        />
+      </AnimatePresence>
+
       <Flex position="absolute" left="45%" top="320px">
         {array.map((c, i) => {
           return (
