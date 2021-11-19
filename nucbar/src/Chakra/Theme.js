@@ -16,6 +16,7 @@ export const theme = extendTheme({
       hover: '#050505',
       grisUno: '#666666',
       grisDos: '#999999',
+      grisTres: '#E9E9E9 ',
     },
   },
   textStyles: {

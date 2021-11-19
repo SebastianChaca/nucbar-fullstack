@@ -45,9 +45,16 @@ const Gallery = () => {
   const Slideshow = ({ children }) => (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        initial={{
+          x: 1000,
+          opacity: 0,
+        }}
+        animate={{ x: 0, opacity: 1, y: 0 }}
+        transition={{
+          opacity: { duration: 0.5 },
+          x: { type: 'spring', stiffness: 300, damping: 30, duration: 0.2 },
+        }}
+        exit={{ x: -1000, opacity: 0 }}
       >
         {children}
       </motion.div>
