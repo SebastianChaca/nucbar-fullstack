@@ -1,13 +1,16 @@
+import { useState } from 'react';
 import { Box, Flex, Text, Button } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../../Redux/Actions/cartActions';
+import { setItems } from '../../Redux/Actions/cartActions';
 import { useHistory } from 'react-router-dom';
-import StockDropdown from './StockDropdown';
+
+import DropDown from './StockDropDownComponents/DropDown';
 function BuyCard({ product }) {
+  const [value, setValue] = useState(1);
   const dispatch = useDispatch();
   const history = useHistory();
   const handleCart = () => {
-    dispatch(addItem(product));
+    dispatch(setItems(product, value));
     history.push('/cart');
   };
   if (!product) {
@@ -23,7 +26,15 @@ function BuyCard({ product }) {
     >
       {product.stock > 0 && <Text textStyle="semiBold">Stock disponibe </Text>}
 
-      <StockDropdown product={product} />
+      <Flex width="400px">
+        <Flex alignItems="start">
+          <Text mr="5px">Cantidad:</Text>
+          <DropDown product={product} value={value} setValue={setValue} />
+        </Flex>
+        <Text color="nucba.grisDos" fontSize="12px" ml="3px">
+          ({product.stock} disponibles )
+        </Text>
+      </Flex>
 
       <Flex flexDir="column" mt="25px">
         <Button

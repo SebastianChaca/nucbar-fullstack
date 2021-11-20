@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import CartTotal from '../../Components/CartCard/CartTotal';
 import CartTotalFixed from '../../Components/CartCard/CartTotalFixed';
 import { useSelector, useDispatch } from 'react-redux';
+import { GoHome } from '../../Components/Shared/SharedComponents';
 import { getTotals } from '../../Redux/Actions/cartActions';
+import { Flex, Text, Box } from '@chakra-ui/react';
 
 const Totals = () => {
   const [heigth, setHeight] = useState();
@@ -20,6 +22,16 @@ const Totals = () => {
     return () => window.removeEventListener('scroll', () => {});
   });
 
+  if (totals.quantity <= 0) {
+    return (
+      <Flex w="100%" p="30px" justifyContent="center">
+        <Box textAlign="center">
+          <Text textStyle="title">No hay productos en tu lista</Text>
+          <GoHome />
+        </Box>
+      </Flex>
+    );
+  }
   return (
     <>
       <CartTotal total={totals?.total} />

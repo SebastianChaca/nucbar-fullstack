@@ -13,6 +13,21 @@ export const addItemToCart = (cartItems, itemToAdd) => {
 
   return [...cartItems, { ...itemToAdd, quantity: 1 }];
 };
+export const setItemToCart = (cartItems, itemToAdd, quantity) => {
+  const existingCartItem = cartItems.find(
+    cartItem => cartItem.id === itemToAdd
+  );
+
+  if (existingCartItem) {
+    return cartItems.map(cartItem => {
+      return cartItem.id === itemToAdd
+        ? { ...cartItem, quantity: quantity }
+        : cartItem;
+    });
+  }
+
+  return [...cartItems, { ...itemToAdd, quantity }];
+};
 
 export const removeItemFromCart = (cartItems, itemToRemove) => {
   const existingCartItem = cartItems.find(
@@ -34,6 +49,7 @@ export const getTotals = cartItems => {
   let { total, quantity } = cartItems.reduce(
     (cartTotal, cartItem) => {
       const { price, quantity } = cartItem;
+
       const itemTotal = price * quantity;
       cartTotal.total += itemTotal;
       cartTotal.quantity += quantity;

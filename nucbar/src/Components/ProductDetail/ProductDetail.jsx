@@ -1,4 +1,3 @@
-import { Image } from '@chakra-ui/image';
 import { Flex } from '@chakra-ui/layout';
 import BuyCard from './BuyCard';
 import PriceDetail from './PriceDetail';

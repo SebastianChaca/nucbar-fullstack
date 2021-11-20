@@ -1,12 +1,10 @@
-import { useState } from 'react';
 import { Box, Flex, Text } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import InputMenuItem from './InputMenuItem';
 import { Menu, MenuButton, Menuitem, MenuItemGroup } from '../../DropDown';
 import useDropDown from '../../../Hooks/useDropDown';
 
-const DropDown = ({ product }) => {
-  const [value, setValue] = useState(1);
+const DropDown = ({ product, value, setValue }) => {
   const { open, handleOpen, ref } = useDropDown();
   const handleClick = value => {
     setValue(value);

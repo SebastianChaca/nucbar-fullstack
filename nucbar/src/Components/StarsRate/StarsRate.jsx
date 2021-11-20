@@ -5,14 +5,14 @@ const StarsRate = ({ rate }) => {
     <Flex>
       {[...Array(rate).keys()].map((item, index) => {
         return (
-          <Box mx="1px" color="nucba.primary">
+          <Box mx="1px" color="nucba.primary" key={item}>
             <FaStar />
           </Box>
         );
       })}
       {[...Array(5 - rate).keys()].map((item, index) => {
         return (
-          <Box mx="1px" color="nucba.primary">
+          <Box mx="1px" color="nucba.primary" key={item}>
             <FaRegStar />
           </Box>
         );
