@@ -48,6 +48,7 @@ const DropDown = ({ product, value, setValue }) => {
                 <Menuitem
                   onClick={() => handleClick(producto)}
                   bg={producto === value && 'nucba.fourth'}
+                  w="200px"
                 >
                   <Text
                     borderLeft={producto === value && '2px'}

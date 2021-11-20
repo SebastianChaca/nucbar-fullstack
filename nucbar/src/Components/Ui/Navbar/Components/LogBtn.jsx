@@ -1,9 +1,7 @@
 import { Text, Button } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-const LogBtn = ({ display }) => {
-  const { token } = useSelector(state => state.user);
 
+const LogBtn = ({ display }) => {
   return (
     <Link to="/login">
       <Button
@@ -15,7 +13,7 @@ const LogBtn = ({ display }) => {
         mt="2px"
         _focus={{ outline: 'none' }}
       >
-        <Text>{token ? 'Cerrar sesión' : 'Ingresá'}</Text>
+        <Text> Ingresá</Text>
       </Button>
     </Link>
   );

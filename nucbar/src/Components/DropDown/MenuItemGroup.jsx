@@ -2,7 +2,7 @@ import { Flex } from '@chakra-ui/layout';
 import { motion } from 'framer-motion';
 import React from 'react';
 
-const MenuItemGroup = ({ children, ref }) => {
+const MenuItemGroup = ({ children, ref, w }) => {
   return (
     <motion.div
       initial={{ height: 0, opacity: 0 }}
@@ -10,12 +10,12 @@ const MenuItemGroup = ({ children, ref }) => {
       transition={{ duration: 0.15 }}
     >
       <Flex
-        w="200px"
+        w={w}
         boxShadow="lg"
         borderRadius="5px"
         position="absolute"
         top="35px"
-        left="0px"
+        right="-10px"
         border="1px"
         borderColor="nucba.grisTres"
         zIndex="200"

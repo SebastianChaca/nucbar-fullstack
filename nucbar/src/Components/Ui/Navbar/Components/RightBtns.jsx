@@ -1,18 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Flex, Box, Text } from '@chakra-ui/react';
-import { containerResponsive } from '../../../../Utils/responsives';
 import { Link } from 'react-router-dom';
-import LogBtn from './LogBtn';
 import { FiShoppingCart } from 'react-icons/fi';
+import NavDropDown from './NavDropDown';
 const RightBtns = () => {
   const cart = useSelector(state => state.cart);
 
   return (
-    <Flex>
-      <LogBtn display={containerResponsive} />
+    <Flex alignItems="center">
+      <NavDropDown />
       <Link to="/cart">
-        <Flex mr="10px" position="relative">
+        <Flex mr="10px" mb="8px" position="relative">
           <FiShoppingCart color="#fff" fontSize="20px" />
           <Box
             position="absolute"

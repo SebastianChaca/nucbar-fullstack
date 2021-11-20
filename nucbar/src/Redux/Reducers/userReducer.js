@@ -1,4 +1,8 @@
-import { SET_CURRENT_USER, START_FETCHING_USER } from '../Actions/userActions';
+import {
+  SET_CURRENT_USER,
+  START_FETCHING_USER,
+  SIGN_OUT,
+} from '../Actions/userActions';
 
 const INITIAL_STATE = {
   currentUser: null,
@@ -16,7 +20,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
         token: action.payload.token,
         loading: false,
       };
-
+    case SIGN_OUT:
+      return { currentUser: null, loading: false };
     default:
       return state;
   }
