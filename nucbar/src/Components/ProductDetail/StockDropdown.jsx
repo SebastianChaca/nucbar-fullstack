@@ -9,7 +9,7 @@ const StockDropdown = ({ product }) => {
         <Text mr="5px">Cantidad:</Text>
         <DropDown product={product} />
       </Flex>
-      <Text color="nucba.grisDos" fontSize="12px">
+      <Text color="nucba.grisDos" fontSize="12px" ml="3px">
         ({product.stock} disponibles )
       </Text>
     </Flex>

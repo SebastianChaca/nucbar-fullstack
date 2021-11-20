@@ -7,9 +7,8 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import InputCustom from '../../Shared/Input';
 
-const InputMenuItem = ({ handleSubmit, handleClose }) => {
+const InputMenuItem = ({ handleSubmit, handleClose, ref }) => {
   const [inputMode, setInputMode] = useState(false);
   const [applyValue, setApplyValue] = useState(null);
   const handleChange = e => {
