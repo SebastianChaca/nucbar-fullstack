@@ -9,7 +9,6 @@ export const LoginForm = {
 export const RegisterForm = inputs => {
   return {
     ...inputs,
-
     name: { value: '', validate: { isValid: false } },
   };
 };

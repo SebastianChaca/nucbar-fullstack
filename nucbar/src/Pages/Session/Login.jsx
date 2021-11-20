@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import InputCustom from '../Shared/Input';
+import InputCustom from '../../Components/Shared/Input';
 import useForm from '../../Hooks/useForm';
 import {
   VALIDATOR_REQUIRE,
@@ -10,8 +10,7 @@ import {
 import { url } from '../../Utils/apiUrl';
 import { LoginForm, RegisterForm } from '../../Utils/initialForms';
 import { Box, Button, Text } from '@chakra-ui/react';
-import FormContainer from './FormContainer';
-import { LinkText } from './LinkText';
+import { LinkText, FormContainer } from '../../Components/Login';
 import useFetch from '../../Hooks/useFetch';
 
 import { setCurrentUser } from '../../Redux/Actions/userActions';
