@@ -30,7 +30,7 @@ const DropDown = ({ product, value, setValue }) => {
 
       {open && (
         <div ref={ref}>
-          <MenuItemGroup>
+          <MenuItemGroup w="200px">
             {[...Array(product.stock).keys()].map((item, index) => {
               const producto = item + 1;
               if (producto === 6) {
@@ -48,7 +48,6 @@ const DropDown = ({ product, value, setValue }) => {
                 <Menuitem
                   onClick={() => handleClick(producto)}
                   bg={producto === value && 'nucba.fourth'}
-                  w="200px"
                 >
                   <Text
                     borderLeft={producto === value && '2px'}
