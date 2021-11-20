@@ -10,7 +10,7 @@ function BuyCard({ product }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const handleCart = () => {
-    dispatch(setItems(product, value));
+    dispatch(setItems(product, parseInt(value)));
     history.push('/cart');
   };
   if (!product) {

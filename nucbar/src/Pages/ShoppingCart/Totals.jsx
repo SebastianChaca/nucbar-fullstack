@@ -22,7 +22,7 @@ const Totals = () => {
     return () => window.removeEventListener('scroll', () => {});
   });
 
-  if (totals.quantity <= 0) {
+  if (totals?.quantity <= 0) {
     return (
       <Flex w="100%" p="30px" justifyContent="center">
         <Box textAlign="center">
