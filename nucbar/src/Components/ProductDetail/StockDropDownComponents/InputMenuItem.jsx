@@ -5,16 +5,23 @@ import {
   InputRightElement,
   InputGroup,
   Button,
+  Flex,
 } from '@chakra-ui/react';
 import { useState } from 'react';
+import { AiFillExclamationCircle } from 'react-icons/ai';
 
-const InputMenuItem = ({ handleSubmit, handleClose, ref }) => {
+const InputMenuItem = ({ handleSubmit, handleClose, product }) => {
   const [inputMode, setInputMode] = useState(false);
   const [applyValue, setApplyValue] = useState(null);
+  const [error, setError] = useState(null);
   const handleChange = e => {
     setApplyValue(e.target.value);
   };
   const submit = () => {
+    if (applyValue > product.stock) {
+      setError(true);
+      return;
+    }
     handleSubmit(applyValue);
     handleClose();
   };
@@ -38,12 +45,13 @@ const InputMenuItem = ({ handleSubmit, handleClose, ref }) => {
             type="number"
             bg="nucba.form"
             focusBorderColor="nucba.primary"
+            isInvalid={error}
           />
           <InputRightElement m="5px" w="55px" value={applyValue}>
             <Button
               h="25px"
               type="submit"
-              isDisabled={!applyValue}
+              isDisabled={!applyValue || error}
               bg={applyValue ? 'nucba.primary' : 'nucba.grisTres'}
               color={applyValue && 'nucba.form'}
               onClick={() => submit()}
@@ -59,6 +67,14 @@ const InputMenuItem = ({ handleSubmit, handleClose, ref }) => {
             </Button>
           </InputRightElement>
         </InputGroup>
+        {error && (
+          <Flex color="nucba.error" alignItems="center" mt="5px">
+            <AiFillExclamationCircle />
+            <Text textStyle="captionRegular" ml="3px">
+              Sin Stock
+            </Text>
+          </Flex>
+        )}
       </Box>
     );
   }

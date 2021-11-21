@@ -17,6 +17,7 @@ export const theme = extendTheme({
       grisUno: '#666666',
       grisDos: '#999999',
       grisTres: '#E9E9E9 ',
+      error: '#cc0000',
     },
   },
   textStyles: {

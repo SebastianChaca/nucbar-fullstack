@@ -1,42 +1,24 @@
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import ListCard from '../../Components/ListCard/ListCard';
+import { useEffect, useRef } from 'react';
 import Banner from '../../Components/Banner/Banner';
 import OrderByDropDown from '../../Components/OrderByDropDown/OrderByDropDown';
 import Breadcrumb from '../../Components/BreadCrumb/Breadcrumb';
 import { Flex, Box, Text } from '@chakra-ui/react';
 import SwitcherCard from '../../Components/SwitcherCard/SwitcherCard';
-import { url } from '../../Utils/apiUrl';
-import useFetch from '../../Hooks/useFetch';
-import { fetchProducts } from '../../Redux/Actions/prodcutsActions';
-import { LoadingSpinner } from '../../Components/Shared/SharedComponents';
+import ProductsList from './ProductsList';
 
 const Products = () => {
   const { category } = useParams();
-  const { products } = useSelector(state => state.products);
-  const { loading, fetchData } = useFetch();
-  const filteredProducts = products?.data?.products.filter(
-    p => p.category === category
-  );
+  const ref = useRef();
 
   useEffect(() => {
-    if (!products) {
-      fetchData('get', `${url}/products`, fetchProducts);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  });
 
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-
-  if (!products) {
-    return <h1>No Hay productos</h1>;
-  }
   const items = ['Bebidas Alcoholicas', 'Whiskys'];
   return (
     <>
+      <div ref={ref}></div>
       <Banner category={category} />
       <Box p="15px 25px 10px 25px">
         <Flex alignItems="center" justifyContent="space-between" mb="20px">
@@ -79,13 +61,7 @@ const Products = () => {
               </Flex>
             </Box>
           </Box>
-          <Box>
-            {filteredProducts.map((product, index) => {
-              return (
-                <ListCard product={product} index={index} key={product.id} />
-              );
-            })}
-          </Box>
+          <ProductsList />
         </Flex>
       </Box>
     </>

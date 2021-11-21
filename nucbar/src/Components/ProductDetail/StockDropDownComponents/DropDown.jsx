@@ -3,6 +3,7 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 import InputMenuItem from './InputMenuItem';
 import { Menu, MenuButton, Menuitem, MenuItemGroup } from '../../DropDown';
 import useDropDown from '../../../Hooks/useDropDown';
+import { motion } from 'framer-motion';
 
 const DropDown = ({ product, value, setValue }) => {
   const { open, handleOpen, ref } = useDropDown();
@@ -22,9 +23,14 @@ const DropDown = ({ product, value, setValue }) => {
             {value}
             {value > 1 ? ' unidades' : ' unidad'}
           </Text>
-          <Box mx="1px">
-            <ChevronDownIcon color="nucba.primary" />
-          </Box>
+          <motion.div
+            animate={open ? { rotate: [0, 180] } : { rotate: [180, 0] }}
+            transition={{ duration: 0.4 }}
+          >
+            <Box mx="1px">
+              <ChevronDownIcon color="nucba.primary" />
+            </Box>
+          </motion.div>
         </Flex>
       </MenuButton>
 
@@ -38,6 +44,7 @@ const DropDown = ({ product, value, setValue }) => {
                   <InputMenuItem
                     handleSubmit={handleSubmit}
                     handleClose={handleOpen}
+                    product={product}
                   />
                 );
               }
