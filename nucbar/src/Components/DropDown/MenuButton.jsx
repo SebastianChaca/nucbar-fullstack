@@ -1,5 +1,11 @@
-import { Button } from '@chakra-ui/react';
-const MenuButton = ({ onClick, children }) => {
+import { Button, Box } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import { ChevronDownIcon } from '@chakra-ui/icons';
+const MenuButton = ({ onClick, children, open, color }) => {
+  const variants = {
+    open: { rotate: 180 },
+    close: { rotate: 0 },
+  };
   return (
     <Button
       bg="none"
@@ -9,6 +15,15 @@ const MenuButton = ({ onClick, children }) => {
       onClick={() => onClick()}
     >
       {children}
+      <motion.div
+        variants={variants}
+        animate={open ? 'open' : 'close'}
+        transition={{ duration: 0.4 }}
+      >
+        <Box mx="1px">
+          <ChevronDownIcon color={color} />
+        </Box>
+      </motion.div>
     </Button>
   );
 };
