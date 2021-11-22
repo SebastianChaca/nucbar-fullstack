@@ -44,7 +44,6 @@ const MenuItemGroup = ({ children, ref, w, open }) => {
         zIndex={1000}
         bg="nucba.form"
         flexDir="column"
-        ref={ref}
       >
         {children}
       </Flex>

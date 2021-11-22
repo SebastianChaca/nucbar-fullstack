@@ -1,4 +1,4 @@
-import { Text } from '@chakra-ui/react';
+import { Text, Box } from '@chakra-ui/react';
 import InputMenuItem from './InputMenuItem';
 import { Menu, MenuButton, Menuitem, MenuItemGroup } from '../../DropDown';
 import useDropDown from '../../../Hooks/useDropDown';
@@ -15,19 +15,19 @@ const DropDown = ({ product, value, setValue }) => {
   };
 
   return (
-    <Menu>
-      <MenuButton
-        onClick={() => handleOpen()}
-        open={open}
-        color="nucba.primary"
-      >
-        <Text textStyle="semiBold">
-          {value}
-          {value > 1 ? ' unidades' : ' unidad'}
-        </Text>
-      </MenuButton>
+    <Box ref={ref}>
+      <Menu>
+        <MenuButton
+          onClick={() => handleOpen()}
+          open={open}
+          color="nucba.primary"
+        >
+          <Text textStyle="semiBold">
+            {value}
+            {value > 1 ? ' unidades' : ' unidad'}
+          </Text>
+        </MenuButton>
 
-      <div ref={ref}>
         <MenuItemGroup w="200px" open={open}>
           {[...Array(product.stock).keys()].map((item, index) => {
             const producto = item + 1;
@@ -63,8 +63,8 @@ const DropDown = ({ product, value, setValue }) => {
             );
           })}
         </MenuItemGroup>
-      </div>
-    </Menu>
+      </Menu>
+    </Box>
   );
 };
 

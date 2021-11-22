@@ -1,9 +1,9 @@
 import React from 'react';
 import { Flex } from '@chakra-ui/react';
-const Menu = ({ children }) => {
+const Menu = ({ children, ref }) => {
   return (
     <>
-      <Flex position="relative" m="0px">
+      <Flex position="relative" m="0px" ref={ref}>
         {children}
       </Flex>
     </>
