@@ -40,7 +40,7 @@ const NavDropDown = () => {
                 p="15px"
                 w="100%"
               >
-                <Link to="/">
+                <Link to="/user">
                   <Text textStyle="captionRegular">Configuración</Text>
                 </Link>
               </Flex>

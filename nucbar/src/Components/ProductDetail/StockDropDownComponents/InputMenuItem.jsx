@@ -15,6 +15,7 @@ const InputMenuItem = ({ handleSubmit, handleClose, product }) => {
   const [applyValue, setApplyValue] = useState(null);
   const [error, setError] = useState(null);
   const handleChange = e => {
+    setError(null);
     setApplyValue(e.target.value);
   };
   const submit = () => {

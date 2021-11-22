@@ -5,6 +5,7 @@ import NotFound from '../Pages/NotFound/NotFound.jsx';
 import Products from '../Pages/Products/Products.jsx';
 import Product from '../Pages/Product/Product.jsx';
 import ShoppingCart from '../Pages/ShoppingCart/ShoppingCart.jsx';
+import UserDashboard from '../Pages/UserDashboard/UserDashboard.jsx';
 export const publicRoutes = [
   {
     id: uuidv4(),
@@ -36,11 +37,25 @@ export const publicRoutes = [
     path: '/cart',
     component: <ShoppingCart />,
   },
-
+  //TODO: si separo en rutas privadas y publicas tengo que agregar el nombre de las rutas
+  // que uso en la parte publica si no el 404 no funciona bien.
+  //pensar si junto todo en un array u otra manera de hacerlo
   {
     id: uuidv4(),
-    exact: false,
-    path: '*',
-    component: <NotFound />,
+    path: '/user',
+    private: true,
+  },
+  // {
+  //   id: uuidv4(),
+  //   exact: false,
+  //   path: '*',
+  //   component: <NotFound />,
+  // },
+];
+export const privateRoutes = [
+  {
+    id: uuidv4(),
+    path: '/user',
+    component: <UserDashboard />,
   },
 ];
