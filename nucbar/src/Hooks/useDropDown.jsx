@@ -1,13 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { useOutsideClick } from '@chakra-ui/react';
 
 const useDropDown = () => {
   const [open, setOpen] = useState(false);
   const ref = useRef();
-  useOutsideClick({
-    ref: ref,
-    handler: () => setOpen(false),
-  });
+
   const handleOpen = () => {
     setOpen(!open);
   };

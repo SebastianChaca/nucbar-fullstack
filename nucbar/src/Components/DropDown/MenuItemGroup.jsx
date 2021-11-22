@@ -8,6 +8,7 @@ const MenuItemGroup = ({ children, ref, w, open }) => {
       visibility: 'visible',
       opacity: 1,
       scale: 1,
+
       transition: {
         duration: 0.2,
         ease: [0.4, 0, 0.2, 1],
@@ -40,7 +41,7 @@ const MenuItemGroup = ({ children, ref, w, open }) => {
         right="-10px"
         border="1px"
         borderColor="nucba.grisTres"
-        zIndex="2000"
+        zIndex={1000}
         bg="nucba.form"
         flexDir="column"
         ref={ref}
