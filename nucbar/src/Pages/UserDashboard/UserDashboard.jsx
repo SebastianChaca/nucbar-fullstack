@@ -6,7 +6,8 @@ import {
 } from 'react-router-dom';
 import React from 'react';
 import DashSidebar from '../../Components/DashSidebar/DashSidebar';
-import { Box } from '@chakra-ui/react';
+
+import UserData from '../../Components/UserData/UserData';
 
 const UserDashboard = () => {
   let { path, url } = useRouteMatch();
@@ -15,7 +16,7 @@ const UserDashboard = () => {
     <Router>
       <Switch>
         <Route path={`${path}/configuration`}>
-          <Box ml="500px">ola</Box>
+          <UserData />
         </Route>
       </Switch>
       <DashSidebar url={url} />

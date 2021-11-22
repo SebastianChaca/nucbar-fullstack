@@ -5,7 +5,6 @@ const DashContainer = ({ open, children }) => {
   return (
     <Flex
       bg="nucba.form"
-      p="30px"
       w="100%"
       flexDir="column"
       alignItems="left"

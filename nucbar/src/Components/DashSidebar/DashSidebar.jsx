@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { Flex } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import HamburgerDash from './Components/HamburgerDash';
-import ConfigDash from './Components/ConfigDash';
 import Backdrop from './Components/Backdrop';
 import DashContainer from './Components/DashContainer';
+import { BsGear } from 'react-icons/bs';
+import { IoBagOutline } from 'react-icons/io5';
+import DashItem from './Components/DashItem';
 const DashSidebar = ({ children, url }) => {
   const [open, setOpen] = useState(false);
 
@@ -36,7 +38,20 @@ const DashSidebar = ({ children, url }) => {
         >
           <DashContainer open={open}>
             <HamburgerDash open={open} handleOpen={handleOpen} />
-            <ConfigDash open={open} url={url} />
+            <DashItem
+              open={open}
+              url={url}
+              icon={<BsGear />}
+              children="Configuración"
+              to="configuration"
+            />
+            <DashItem
+              open={open}
+              url={url}
+              icon={<IoBagOutline />}
+              children="Mis compras"
+              to="orders"
+            />
           </DashContainer>
         </motion.div>
         <Backdrop open={open} onClick={setOpen} />

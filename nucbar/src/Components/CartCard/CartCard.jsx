@@ -1,11 +1,11 @@
-import { Flex, Text, Box } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 import ProductImage from '../ProductImage/ProductImage';
 import QuantityComponent from './QuantityComponent';
 
 const CartCard = ({ product }) => {
   return (
-    <Box pb="10px">
+    <>
       <Flex
         justifyContent="space-between"
         alignItems="center"
@@ -24,7 +24,7 @@ const CartCard = ({ product }) => {
         <Text textStyle="subtitle">${product?.price}</Text>
       </Flex>
       <hr />
-    </Box>
+    </>
   );
 };
 

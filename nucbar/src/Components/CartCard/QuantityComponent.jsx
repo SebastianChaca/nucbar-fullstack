@@ -40,7 +40,8 @@ const QuantityComponent = ({ product }) => {
   return (
     <Flex
       borderRadius="8px"
-      border="1px solid rgba(0,0,0,0.1)"
+      border="1px solid"
+      borderColor="nucba.border"
       justifyContent="space-between"
       alignItems="center"
       width="120px"

@@ -17,6 +17,8 @@ export const theme = extendTheme({
       grisUno: '#666666',
       grisDos: '#999999',
       grisTres: '#E9E9E9 ',
+      grisMeli: 'rgba(0,0,0,.45)',
+      border: 'rgba(0, 0, 0, 0.1)',
       error: '#cc0000',
     },
   },

@@ -10,13 +10,13 @@ const HamburgerDash = ({ open, handleOpen }) => {
     close: { rotate: 0 },
   };
   return (
-    <Flex alignItems="start">
+    <Flex alignItems="start" px="30px" pt="50px">
       <Box
-        fontSize="20px"
+        fontSize="25px"
         w="20px"
         h="20px"
         mt="2px"
-        mb="50px"
+        mb="40px"
         cursor="pointer"
         color="nucba.primary"
         onClick={() => handleOpen()}
