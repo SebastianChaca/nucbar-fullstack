@@ -6,7 +6,7 @@ const OpacityDiv = ({ children, open }) => {
     open: {
       opacity: 1,
       transition: {
-        duration: 0.7,
+        duration: 0.6,
       },
     },
     close: { opacity: 0 },
