@@ -16,7 +16,10 @@ const UserDashboard = () => {
     <Router>
       <Switch>
         <Route path={`${path}/configuration`}>
-          <UserData />
+          <UserData url={url} />
+        </Route>
+        <Route path={`${path}/updatename`}>
+          <h1>Actualizar nombre</h1>
         </Route>
       </Switch>
       <DashSidebar url={url} />

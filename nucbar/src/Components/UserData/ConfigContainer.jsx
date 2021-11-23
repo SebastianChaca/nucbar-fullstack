@@ -1,9 +1,21 @@
-import { Flex } from '@chakra-ui/react';
-const ConfigContainer = ({ children }) => {
+import { Flex, Box } from '@chakra-ui/react';
+import { useHistory } from 'react-router-dom';
+
+const ConfigContainer = ({ children, to }) => {
+  const history = useHistory();
   return (
-    <Flex justifyContent="space-between" alignItems="center" p="15px">
-      {children}
-    </Flex>
+    <Box
+      cursor="pointer"
+      position="relative"
+      zIndex={1000}
+      onClick={() => {
+        history.push(to);
+      }}
+    >
+      <Flex justifyContent="space-between" alignItems="center" p="15px">
+        {children}
+      </Flex>
+    </Box>
   );
 };
 

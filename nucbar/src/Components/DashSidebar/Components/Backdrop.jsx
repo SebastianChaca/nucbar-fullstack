@@ -6,7 +6,7 @@ const Backdrop = ({ open, onClick }) => {
     <OpacityDiv open={open}>
       <Box
         w="100vw"
-        h="100vh"
+        h="calc(100vh - 80px)"
         bg="rgba(0, 0, 0, 0.4)"
         boxShadow="inset 0 0 5px rgba(0, 0, 0, 0.5)"
         onClick={() => onClick(false)}
