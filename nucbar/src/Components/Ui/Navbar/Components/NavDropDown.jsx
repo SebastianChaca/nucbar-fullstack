@@ -23,8 +23,8 @@ const NavDropDown = () => {
   const name = user?.currentUser?.name;
   const upperCaseName = name.charAt(0).toUpperCase() + name.slice(1);
   return (
-    <Box mr="10px" display={containerResponsive}>
-      <Menu ref={ref}>
+    <Box mr="10px" display={containerResponsive} ref={ref}>
+      <Menu>
         <MenuButton onClick={() => handleOpen()} open={open} color="nucba.form">
           <Avatar name={name} bg={'nucba.fourth'} size="sm" mr="10px" />
           <Text color="nucba.form" textStyle="semiBold" id="drop">
