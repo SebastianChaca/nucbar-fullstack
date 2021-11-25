@@ -1,5 +1,5 @@
 import React from 'react';
-import OpacityDiv from '../../Transitions/Opacity/OpacityDiv';
+import OpacityDiv from '../../../Transitions/Opacity/OpacityDiv';
 import { Flex, Box, Text } from '@chakra-ui/react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';

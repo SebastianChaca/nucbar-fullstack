@@ -4,7 +4,7 @@ import { IoBagOutline } from 'react-icons/io5';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { HamburgerDash, Backdrop, DashContainer, DashItem } from './Components';
 
-const DashSidebar = ({ children, url }) => {
+const DashSidebar = ({ url }) => {
   return (
     <>
       <Flex position="absolute" top="80px">

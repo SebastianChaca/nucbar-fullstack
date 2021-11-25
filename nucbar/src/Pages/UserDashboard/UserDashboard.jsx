@@ -5,9 +5,11 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import React from 'react';
-import DashSidebar from '../../Components/DashSidebar/DashSidebar';
-
-import { UserData, UpdatePassword } from '../../Components/UserDashboard';
+import {
+  UserData,
+  UpdatePassword,
+  DashSidebar,
+} from '../../Components/UserDashboard';
 
 const UserDashboard = () => {
   let { path, url } = useRouteMatch();

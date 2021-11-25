@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
-import OpacityDiv from '../../Transitions/Opacity/OpacityDiv';
+import OpacityDiv from '../../../Transitions/Opacity/OpacityDiv';
 import { useSelector, useDispatch } from 'react-redux';
-import { handleUserSidebar } from '../../../Redux/Actions/sidebarActions';
+import { handleUserSidebar } from '../../../../Redux/Actions/sidebarActions';
 const Backdrop = () => {
   const { userSidebar } = useSelector(state => state.sidebars);
   const dispatch = useDispatch();
