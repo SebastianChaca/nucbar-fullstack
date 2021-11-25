@@ -37,7 +37,7 @@ const MenuItemGroup = ({ children, ref, w, open }) => {
         boxShadow="lg"
         borderRadius="5px"
         position="absolute"
-        top="35px"
+        top="50px"
         right="-10px"
         border="1px"
         borderColor="nucba.grisTres"

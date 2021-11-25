@@ -6,6 +6,7 @@ import Backdrop from './Components/Backdrop';
 import DashContainer from './Components/DashContainer';
 import { BsGear } from 'react-icons/bs';
 import { IoBagOutline } from 'react-icons/io5';
+import { RiLockPasswordLine } from 'react-icons/ri';
 import DashItem from './Components/DashItem';
 const DashSidebar = ({ children, url }) => {
   const [open, setOpen] = useState(false);
@@ -51,6 +52,13 @@ const DashSidebar = ({ children, url }) => {
               icon={<IoBagOutline />}
               children="Mis compras"
               to="orders"
+            />
+            <DashItem
+              open={open}
+              url={url}
+              to="updatepassword"
+              children="Cambiar contraseña"
+              icon={<RiLockPasswordLine />}
             />
           </DashContainer>
         </motion.div>

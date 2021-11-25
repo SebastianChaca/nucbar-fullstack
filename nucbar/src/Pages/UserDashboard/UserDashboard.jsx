@@ -7,7 +7,7 @@ import {
 import React from 'react';
 import DashSidebar from '../../Components/DashSidebar/DashSidebar';
 
-import UserData from '../../Components/UserData/UserData';
+import { UserData, UpdatePassword } from '../../Components/UserDashboard';
 
 const UserDashboard = () => {
   let { path, url } = useRouteMatch();
@@ -17,6 +17,9 @@ const UserDashboard = () => {
       <Switch>
         <Route path={`${path}/configuration`}>
           <UserData url={url} />
+        </Route>
+        <Route path={`${path}/updatepassword`}>
+          <UpdatePassword url={url} />
         </Route>
         <Route path={`${path}/updatename`}>
           <h1>Actualizar nombre</h1>
