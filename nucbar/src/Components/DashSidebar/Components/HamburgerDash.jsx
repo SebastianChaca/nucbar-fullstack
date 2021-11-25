@@ -4,7 +4,11 @@ import { motion } from 'framer-motion';
 import OpacityDiv from '../../Transitions/Opacity/OpacityDiv';
 import { GrClose } from 'react-icons/gr';
 import { GiHamburgerMenu } from 'react-icons/gi';
-const HamburgerDash = ({ open, handleOpen }) => {
+import { useSelector, useDispatch } from 'react-redux';
+import { handleUserSidebar } from '../../../Redux/Actions/sidebarActions';
+const HamburgerDash = () => {
+  const { userSidebar } = useSelector(state => state.sidebars);
+  const dispatch = useDispatch();
   const buttonVariants = {
     open: { rotate: 180 },
     close: { rotate: 0 },
@@ -19,13 +23,16 @@ const HamburgerDash = ({ open, handleOpen }) => {
         mb="40px"
         cursor="pointer"
         color="nucba.primary"
-        onClick={() => handleOpen()}
+        onClick={() => dispatch(handleUserSidebar())}
       >
-        <motion.div variants={buttonVariants} animate={open ? 'open' : 'close'}>
-          {open ? <GrClose /> : <GiHamburgerMenu />}
+        <motion.div
+          variants={buttonVariants}
+          animate={userSidebar ? 'open' : 'close'}
+        >
+          {userSidebar ? <GrClose /> : <GiHamburgerMenu />}
         </motion.div>
       </Box>
-      <OpacityDiv open={open}>
+      <OpacityDiv open={userSidebar}>
         <Text textStyle="subtitle" color="black" ml="10px">
           Mi Cuenta
         </Text>

@@ -1,6 +1,6 @@
 import { Text } from '@chakra-ui/layout';
 import React from 'react';
-import RectangularCard from '../../RectangularCard/RectangularCard';
+
 import { UserDashCard, UserDashContainer } from '../Components';
 
 const UpdatePassword = () => {

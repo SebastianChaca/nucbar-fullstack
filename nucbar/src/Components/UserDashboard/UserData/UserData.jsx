@@ -1,7 +1,5 @@
 import React from 'react';
 import { Text } from '@chakra-ui/react';
-
-import RectangularCard from '../../RectangularCard/RectangularCard';
 import { useSelector } from 'react-redux';
 import { UserDashContainer, UserDashCard } from '../Components';
 

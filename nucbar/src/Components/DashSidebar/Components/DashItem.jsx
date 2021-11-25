@@ -2,9 +2,11 @@ import React from 'react';
 import OpacityDiv from '../../Transitions/Opacity/OpacityDiv';
 import { Flex, Box, Text } from '@chakra-ui/react';
 import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const DashItem = ({ open, url, children, to, icon }) => {
+const DashItem = ({ url, children, to, icon }) => {
   const { pathname } = useLocation();
+  const { userSidebar } = useSelector(state => state.sidebars);
 
   return (
     <Box
@@ -24,7 +26,7 @@ const DashItem = ({ open, url, children, to, icon }) => {
               {icon}
             </Box>
 
-            <OpacityDiv open={open}>
+            <OpacityDiv open={userSidebar}>
               <Text textStyle="regular" ml="10px" mt="3px">
                 {children}
               </Text>
