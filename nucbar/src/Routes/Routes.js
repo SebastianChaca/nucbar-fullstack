@@ -22,7 +22,7 @@ export const publicRoutes = [
   {
     id: uuidv4(),
     exact: false,
-    path: '/products/:category',
+    path: '/products',
     component: <Products />,
   },
   {

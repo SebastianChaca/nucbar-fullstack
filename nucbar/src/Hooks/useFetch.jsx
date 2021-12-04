@@ -8,13 +8,12 @@ const useFetch = () => {
   const dispatch = useDispatch();
   const fetchData = async (method, url, action, data) => {
     setLoading(true);
-
     try {
-      if (!response && !error) {
-        const response = await axios({ method, url, data });
+      const response = await axios({ method, url, data });
+      if (action) {
         dispatch(action(response.data));
-        setResponse(response.data);
       }
+      setResponse(response.data);
     } catch (error) {
       setError(error.response?.data?.message);
     } finally {

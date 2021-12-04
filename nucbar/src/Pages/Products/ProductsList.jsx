@@ -5,6 +5,7 @@ import { Flex, Box, Text } from '@chakra-ui/react';
 import ListCard from '../../Components/ListCard/ListCard';
 import { url } from '../../Utils/apiUrl';
 import useFetch from '../../Hooks/useFetch';
+import { useLocation } from 'react-router-dom';
 import { fetchProducts } from '../../Redux/Actions/prodcutsActions';
 import {
   GoHome,
@@ -12,6 +13,7 @@ import {
 } from '../../Components/Shared/SharedComponents';
 
 const ProductsList = () => {
+  const { search } = useLocation();
   const { category } = useParams();
   const { products } = useSelector(state => state.products);
   const { loading, fetchData } = useFetch();
@@ -19,13 +21,12 @@ const ProductsList = () => {
   const filteredProducts = products?.data?.products.filter(
     p => p.category === category
   );
-
+  console.log(search);
   useEffect(() => {
-    if (!products) {
-      fetchData('get', `${url}/products`, fetchProducts);
-    }
+    fetchData('get', `${url}/products${search}`, fetchProducts);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products]);
+  }, [search]);
 
   if (loading) {
     return (
@@ -46,7 +47,7 @@ const ProductsList = () => {
   return (
     <Box>
       {products &&
-        filteredProducts.map((product, index) => {
+        products?.data?.products.map((product, index) => {
           return <ListCard product={product} index={index} key={product.id} />;
         })}
     </Box>

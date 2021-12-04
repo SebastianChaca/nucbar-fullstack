@@ -1,24 +1,19 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
 
 const OpacityDiv = ({ children, open }) => {
-  const variants = {
-    open: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-      },
-    },
-    close: { opacity: 0 },
-  };
   return (
-    <motion.div
-      variants={variants}
-      initial={false}
-      animate={open ? 'open' : 'close'}
-    >
-      {children}
-    </motion.div>
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

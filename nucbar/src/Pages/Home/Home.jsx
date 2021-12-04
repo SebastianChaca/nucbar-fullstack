@@ -1,37 +1,36 @@
-import React, { useEffect } from 'react';
-import { url } from '../../Utils/apiUrl';
-import useFetch from '../../Hooks/useFetch';
-import { fetchProducts } from '../../Redux/Actions/prodcutsActions';
+import React from 'react';
 import Section from '../../Components/Section/Section';
-import { useSelector } from 'react-redux';
 import { MemoGallery } from '../../Components/Ui/Gallery/Gallery';
-import { filterProductsByCategory } from '../../Utils/filterProductsByCaterogy';
 
 export const Home = () => {
-  const { loading, fetchData } = useFetch();
-  const { products } = useSelector(state => state.products);
+  //Test
+  // const queryClean = search
+  //   .replace('?', '')
+  //   .split('category')
+  //   .join('')
+  //   .split('=')
+  //   .join('')
+  //   .split('&');
 
-  useEffect(() => {
-    fetchData('get', `${url}/products`, fetchProducts);
-  }, [fetchData]);
+  // useEffect(() => {
+  //   history.push({
+  //     search: `?category=${
+  //       queryClean[0] ? queryClean[0] : 'Whiskys'
+  //     }&category=${
+  //       queryClean[1] ? queryClean[1] : 'Habanos%20y%20puros'
+  //     }&category=${queryClean[2] ? queryClean[2] : 'Pipas'}`,
+  //   });
+  // }, [search, history]);
 
-  //TODO: implementar secciones en la api
-  const categories = ['Whiskys', 'Habanos y puros', 'Pipas'];
-
+  //esto tiene que venir dle backoffice
+  const categorias = ['Whiskys', 'Habanos%20y%20puros', 'Pipas'];
   return (
     <>
       <MemoGallery />
-      {products ? (
-        categories.map((cat, index) => (
-          <Section
-            key={index}
-            section={cat}
-            products={filterProductsByCategory(products?.data?.products, cat)}
-          />
-        ))
-      ) : (
-        <Section loading={loading} />
-      )}
+      {categorias &&
+        categorias.map(categoria => {
+          return <Section category={categoria} key={categoria} />;
+        })}
     </>
   );
 };

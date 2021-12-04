@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Flex, Grid, Box, Skeleton, Button, Text } from '@chakra-ui/react';
 import { Card } from '../Card/Card';
 import { Link } from 'react-router-dom';
-
-const Section = ({ loading, section, products }) => {
+import useFetch from '../../Hooks/useFetch';
+import { fetchProducts } from '../../Redux/Actions/prodcutsActions';
+import { useSelector } from 'react-redux';
+import { url } from '../../Utils/apiUrl';
+const Section = ({ category }) => {
   const [showBtn, setShowBtn] = useState(false);
+  const { loading, fetchData, response } = useFetch();
+
   const skeletonCards = [1, 2, 3, 4, 5];
   // const lastSarasa = sarasa[sarasa.length - 1] - 1;
+
+  useEffect(() => {
+    fetchData('get', `${url}/products?category=${category}`);
+  }, []);
 
   return (
     <Flex alignContent="center" mx="30px" my="30px" flexDir="column">
@@ -19,7 +28,7 @@ const Section = ({ loading, section, products }) => {
         isLoaded={!loading}
       >
         <Text mb="20px" w="350px" textStyle="pagetitle">
-          {section}
+          {category.replace('%20', ' ').replace('%20', ' ')}
         </Text>
       </Skeleton>
 
@@ -33,8 +42,8 @@ const Section = ({ loading, section, products }) => {
         }}
         justifyContent="center"
       >
-        {products
-          ? products.slice(0, 5).map((product, index) => {
+        {response
+          ? response.data.products.slice(0, 5).map((product, index) => {
               return (
                 <Card
                   key={product.id}
@@ -52,7 +61,12 @@ const Section = ({ loading, section, products }) => {
       </Grid>
       {!loading && (
         <Box m="auto">
-          <Link to={`products/${section}`}>
+          <Link
+            to={{
+              pathname: `products`,
+              search: `category=${category}&page=1&limit=4`,
+            }}
+          >
             <Button
               color="nucba.form"
               bg="nucba.primary"
