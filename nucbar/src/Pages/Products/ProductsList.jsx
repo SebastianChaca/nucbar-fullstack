@@ -14,14 +14,9 @@ import {
 
 const ProductsList = () => {
   const { search } = useLocation();
-  const { category } = useParams();
   const { products } = useSelector(state => state.products);
   const { loading, fetchData } = useFetch();
 
-  const filteredProducts = products?.data?.products.filter(
-    p => p.category === category
-  );
-  console.log(search);
   useEffect(() => {
     fetchData('get', `${url}/products${search}`, fetchProducts);
 

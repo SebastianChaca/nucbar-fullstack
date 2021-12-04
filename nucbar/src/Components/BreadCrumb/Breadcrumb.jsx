@@ -3,7 +3,7 @@ import { IoIosArrowForward } from 'react-icons/io';
 
 const Breadcrumb = ({ items }) => {
   const lastItem = items[items.length - 1];
-  console.log(lastItem);
+
   const BreadCrumbItem = ({ item }) => {
     return (
       <Flex alignItems="center" ml={lastItem !== item && '10px'}>
