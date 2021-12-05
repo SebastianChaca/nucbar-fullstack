@@ -4,6 +4,7 @@ export const theme = extendTheme({
     global: {
       'html, body': {
         backgroundColor: '#eceae9',
+        margin: '0px',
       },
     },
   },
@@ -13,7 +14,7 @@ export const theme = extendTheme({
       primary: '#ed1582',
       third: '#B84E9F',
       fourth: '#deb0eb',
-      hover: '#050505',
+      hover: '#212422',
       grisUno: '#666666',
       grisDos: '#999999',
       grisTres: '#E9E9E9 ',

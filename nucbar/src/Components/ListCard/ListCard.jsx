@@ -74,7 +74,7 @@ const ListCard = ({ product, index }) => {
               <Text fontSize="sm" color="gray.500" mt="15px">
                 {product && product.shortDescription}
               </Text>
-              {product?.price >= 5000 && (
+              {product?.freeShipping && (
                 <Text
                   fontSize="13px"
                   color="pink.500"
