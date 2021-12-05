@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Flex, Box, Text } from '@chakra-ui/react';
