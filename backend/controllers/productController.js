@@ -9,6 +9,7 @@ exports.stockProducts = (req, res, next) => {
 };
 
 exports.getProducts = catchAsync(async (req, res, next) => {
+  console.log(req.query);
   const features = new APIFeatures(Product.find(), req.query)
     .filter()
     .sort()

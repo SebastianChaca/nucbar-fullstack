@@ -52,6 +52,9 @@ const ProductSchema = mongoose.Schema(
 ProductSchema.virtual('hasStock').get(function () {
   return this.stock > 0;
 });
+ProductSchema.virtual('freeShipping').get(function () {
+  return this.price > 4000;
+});
 // ProductSchema.pre(/^find/, function (next) {
 //   this.find({ stock: { $ne: this.stock > 0 } });
 

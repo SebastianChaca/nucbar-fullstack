@@ -14,7 +14,7 @@ const cors = require('cors');
 const app = express();
 const limiter = rateLimit({
   max: 50,
-  windowMs: 60 * 60 * 1000,
+  // windowMs: 60 * 60 * 1000,
   message: 'Too many request from this IP',
 });
 //CORS
