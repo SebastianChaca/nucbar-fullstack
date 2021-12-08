@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import Banner from '../../Components/Banner/Banner';
 import OrderByDropDown from '../../Components/OrderByDropDown/OrderByDropDown';
@@ -6,10 +6,23 @@ import Breadcrumb from '../../Components/BreadCrumb/Breadcrumb';
 import { Flex, Box, Text } from '@chakra-ui/react';
 import SwitcherCard from '../../Components/SwitcherCard/SwitcherCard';
 import ProductsList from './ProductsList';
-
+import useFetch from '../../Hooks/useFetch';
+import { url } from '../../Utils/apiUrl';
+import { getProductsStats } from '../../Redux/Actions/statsActions';
 const Products = () => {
+  const { search } = useLocation();
+  const { loading, fetchData } = useFetch();
   const { category } = useParams();
   const ref = useRef();
+
+  useEffect(() => {
+    fetchData(
+      'get',
+      `${url}/products/products-stats?category=whiskys`,
+      getProductsStats
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     ref.current.scrollIntoView({ behavior: 'smooth' });

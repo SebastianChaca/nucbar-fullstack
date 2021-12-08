@@ -23,7 +23,7 @@ export const Home = () => {
   // }, [search, history]);
 
   //esto tiene que venir dle backoffice
-  const categorias = ['Whiskys', 'Habanos%20y%20puros', 'Pipas'];
+  const categorias = ['whiskys', 'habanos%20y%20puros', 'pipas'];
   return (
     <>
       <MemoGallery />
