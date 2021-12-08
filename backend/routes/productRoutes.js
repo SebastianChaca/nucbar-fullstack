@@ -6,6 +6,9 @@ const router = express.Router();
 router
   .route('/stock')
   .get(productController.stockProducts, productController.getProducts);
+
+router.route('/products-stats').get(productController.getProductsStats);
+
 router
   .route('/')
   .get(productController.getProducts)

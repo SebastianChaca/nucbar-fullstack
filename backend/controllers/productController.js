@@ -8,8 +8,40 @@ exports.stockProducts = (req, res, next) => {
   next();
 };
 
+exports.getProductsStats = catchAsync(async (req, res) => {
+  const { category } = req.query;
+  const totals = await Product.aggregate([
+    {
+      $match: { category },
+    },
+    {
+      $group: {
+        _id: 'null',
+        total: { $sum: 1 },
+      },
+    },
+  ]);
+  const stats = await Product.aggregate([
+    {
+      $match: { category },
+    },
+    {
+      $group: {
+        _id: '$brand',
+        total: { $sum: 1 },
+      },
+    },
+  ]);
+  res.status(200).json({
+    status: 'success',
+    results: totals[0].total,
+    data: {
+      stats,
+    },
+  });
+});
+
 exports.getProducts = catchAsync(async (req, res, next) => {
-  console.log(req.query);
   const features = new APIFeatures(Product.find(), req.query)
     .filter()
     .sort()
