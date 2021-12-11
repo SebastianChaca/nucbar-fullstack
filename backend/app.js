@@ -6,6 +6,7 @@ const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
 const orderRouter = require('./routes/orderRoutes');
 const authRoutes = require('./routes/authRoutes');
+const checkoutRouter = require('./routes/checkoutRoutes');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
@@ -31,6 +32,7 @@ app.use('/auth', authRoutes);
 app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use('/orders', orderRouter);
+app.use('/checkout', checkoutRouter);
 app.all('*', (res, req, next) => {
   next(new AppError(`Ruta no encontrada`));
 });
