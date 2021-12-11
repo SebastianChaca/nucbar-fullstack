@@ -25,7 +25,9 @@ const Checkout = () => {
     }
   }, [response, history]);
   useEffect(() => {
-    ref.current.scrollIntoView({ behavior: 'smooth' });
+    if (ref) {
+      ref?.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   });
   if (loading) {
     return <LoadingSpinner />;

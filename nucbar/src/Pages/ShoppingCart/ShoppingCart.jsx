@@ -11,7 +11,7 @@ const ShoppingCart = () => {
   const { cartItems, totals } = useSelector(state => state.cart);
   const { token } = useSelector(state => state.user);
   const history = useHistory();
-  console.log(token);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

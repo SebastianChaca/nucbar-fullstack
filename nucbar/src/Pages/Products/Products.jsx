@@ -2,8 +2,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import Banner from '../../Components/Banner/Banner';
 import OrderByDropDown from '../../Components/OrderByDropDown/OrderByDropDown';
-import Breadcrumb from '../../Components/BreadCrumb/Breadcrumb';
-import { Flex, Box, Text } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
 import SwitcherCard from '../../Components/SwitcherCard/SwitcherCard';
 import ProductsList from './ProductsList';
 import useFetch from '../../Hooks/useFetch';
@@ -11,6 +10,7 @@ import { url } from '../../Utils/apiUrl';
 import { getProductsStats } from '../../Redux/Actions/statsActions';
 import Brands from './Brands';
 import { cleanQuery } from '../../Utils/cleanQuery';
+import BreadCrumb from './BreadCrumb';
 
 const Products = () => {
   const { search } = useLocation();
@@ -39,7 +39,7 @@ const Products = () => {
       <Banner category={category} />
       <Box p="15px 25px 10px 25px">
         <Flex alignItems="center" justifyContent="space-between" mb="20px">
-          <Breadcrumb items={items} />
+          <BreadCrumb items={items} />
           <OrderByDropDown />
         </Flex>
         <Flex alignItems="flex-start" justifyContent="space-between">
