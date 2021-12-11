@@ -9,16 +9,20 @@ import ProductsList from './ProductsList';
 import useFetch from '../../Hooks/useFetch';
 import { url } from '../../Utils/apiUrl';
 import { getProductsStats } from '../../Redux/Actions/statsActions';
+import Brands from './Brands';
+import { cleanQuery } from '../../Utils/cleanQuery';
+
 const Products = () => {
   const { search } = useLocation();
   const { loading, fetchData } = useFetch();
   const { category } = useParams();
   const ref = useRef();
+  const clean = cleanQuery(search);
 
   useEffect(() => {
     fetchData(
       'get',
-      `${url}/products/products-stats?category=whiskys`,
+      `${url}/products/products-stats?category=${clean[0]}`,
       getProductsStats
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,35 +47,7 @@ const Products = () => {
             <SwitcherCard text={'Envío gratis'} />
             <SwitcherCard text={'Desde 10% OFF'} discount />
             <Box mt="25px">
-              <Text fontWeight="600" fontSize="18px">
-                Marcas
-              </Text>
-              <Flex mt="8px">
-                <Text
-                  fontSize="13px"
-                  fontWeight="400"
-                  color="nucba.grisUno"
-                  mr="4px"
-                >
-                  Marca 1
-                </Text>
-                <Text fontSize="13px" color="nucba.grisDos">
-                  (2)
-                </Text>
-              </Flex>
-              <Flex mt="8px">
-                <Text
-                  fontSize="13px"
-                  fontWeight="400"
-                  color="nucba.grisUno"
-                  mr="4px"
-                >
-                  Marca 2
-                </Text>
-                <Text fontSize="13px" color="nucba.grisDos">
-                  (4)
-                </Text>
-              </Flex>
+              <Brands loading={loading} />
             </Box>
           </Box>
           <ProductsList />

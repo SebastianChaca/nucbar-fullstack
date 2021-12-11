@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Box, Flex, Button } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import useFetch from '../../Hooks/useFetch';
@@ -9,7 +9,7 @@ const Checkout = () => {
   const history = useHistory();
   const { cartItems } = useSelector(state => state.cart);
   const { loading, response, fetchData } = useFetch();
-
+  const ref = useRef();
   let mp = cartItems.map(item => {
     const unit_price = item.price;
     const title = item.name;
@@ -24,16 +24,21 @@ const Checkout = () => {
       window.location.href = response?.data?.response?.response?.init_point;
     }
   }, [response, history]);
-
+  useEffect(() => {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  });
   if (loading) {
     return <LoadingSpinner />;
   }
   return (
-    <Flex h="calc(100vh - 80px)" justifyContent={'center'}>
-      <Button variant="primary" mt="50px" onClick={() => handleClick()}>
-        Mercado Pago
-      </Button>
-    </Flex>
+    <>
+      <div ref={ref}></div>
+      <Flex h="calc(100vh - 80px)" justifyContent={'center'}>
+        <Button variant="primary" mt="50px" onClick={() => handleClick()}>
+          Mercado Pago
+        </Button>
+      </Flex>
+    </>
   );
 };
 
