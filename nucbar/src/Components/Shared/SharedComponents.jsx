@@ -85,7 +85,7 @@ export const useCustomToast = () => {
 };
 export const LoadingSpinner = () => {
   return (
-    <Box textAlign="center" mt="50px" display="block">
+    <Box textAlign="center" mt="50px" display="block" h="calc(100vh - 80px)">
       <Text mb="20px">Cargando...</Text>
       <Spinner
         thickness="4px"

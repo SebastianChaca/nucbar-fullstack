@@ -6,6 +6,7 @@ import Products from '../Pages/Products/Products.jsx';
 import Product from '../Pages/Product/Product.jsx';
 import ShoppingCart from '../Pages/ShoppingCart/ShoppingCart.jsx';
 import UserDashboard from '../Pages/UserDashboard/UserDashboard.jsx';
+import Checkout from '../Pages/Checkout/Checkout.jsx';
 export const publicRoutes = [
   {
     id: uuidv4(),
@@ -57,5 +58,10 @@ export const privateRoutes = [
     id: uuidv4(),
     path: '/user',
     component: <UserDashboard />,
+  },
+  {
+    id: uuidv4(),
+    path: '/checkout',
+    component: <Checkout />,
   },
 ];

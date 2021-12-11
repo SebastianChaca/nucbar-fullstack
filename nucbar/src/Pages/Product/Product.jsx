@@ -6,6 +6,7 @@ import { url } from '../../Utils/apiUrl';
 import useFetch from '../../Hooks/useFetch';
 import { fetchProducts } from '../../Redux/Actions/prodcutsActions';
 import { LoadingSpinner } from '../../Components/Shared/SharedComponents';
+
 const Product = () => {
   const { id } = useParams();
   const { loading, fetchData } = useFetch();

@@ -1,4 +1,4 @@
-import { Flex, Text, Box } from '@chakra-ui/react';
+import { Flex, Text, Box, Button } from '@chakra-ui/react';
 import { GoHome } from '../../Components/Shared/SharedComponents';
 import { useEffect } from 'react';
 import CartCard from '../../Components/CartCard/CartCard';
@@ -6,10 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTotals } from '../../Redux/Actions/cartActions';
 import Totals from './Totals';
 import RectangularCard from '../../Components/RectangularCard/RectangularCard';
-
+import { useHistory } from 'react-router-dom';
 const ShoppingCart = () => {
   const { cartItems, totals } = useSelector(state => state.cart);
-
+  const { token } = useSelector(state => state.user);
+  const history = useHistory();
+  console.log(token);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const ShoppingCart = () => {
 
   if (totals?.quantity <= 0) {
     return (
-      <Flex w="100%" p="30px" justifyContent="center">
+      <Flex w="100%" p="30px" justifyContent="center" h="calc(100vh - 80px)">
         <Box textAlign="center">
           <Text textStyle="title">No hay productos en tu lista</Text>
           <GoHome />
@@ -27,7 +29,7 @@ const ShoppingCart = () => {
     );
   }
   return (
-    <>
+    <Flex flexDir="column" alignItems="center">
       <RectangularCard
         flexDir="column"
         posiiton="relative"
@@ -41,7 +43,16 @@ const ShoppingCart = () => {
         })}
         <Totals />
       </RectangularCard>
-    </>
+      {token && (
+        <Button
+          variant="primary"
+          w="100px"
+          onClick={() => history.push('/checkout')}
+        >
+          Comprar
+        </Button>
+      )}
+    </Flex>
   );
 };
 
