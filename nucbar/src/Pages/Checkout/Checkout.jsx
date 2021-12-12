@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Box, Flex, Button } from '@chakra-ui/react';
+import { Flex, Button } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import useFetch from '../../Hooks/useFetch';
 import { url } from '../../Utils/apiUrl';

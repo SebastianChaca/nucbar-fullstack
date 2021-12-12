@@ -3,8 +3,6 @@ import { Flex, Grid, Box, Skeleton, Button, Text } from '@chakra-ui/react';
 import { Card } from '../Card/Card';
 import { Link } from 'react-router-dom';
 import useFetch from '../../Hooks/useFetch';
-import { fetchProducts } from '../../Redux/Actions/prodcutsActions';
-import { useSelector } from 'react-redux';
 import { url } from '../../Utils/apiUrl';
 const Section = ({ category }) => {
   const [showBtn, setShowBtn] = useState(false);
