@@ -1,10 +1,18 @@
-import React from 'react';
-import { Flex } from '@chakra-ui/react';
-const Menu = ({ children, ref }) => {
+import React, { useRef } from 'react';
+import { Flex, Box } from '@chakra-ui/react';
+import DropdownProvider from './DropdownProvider';
+
+const Menu = ({ children }) => {
+  const ref = useRef();
+
   return (
-    <Flex position="relative" m="0px">
-      {children}
-    </Flex>
+    <DropdownProvider ref={ref}>
+      <Box ref={ref}>
+        <Flex position="relative" m="0px">
+          {children}
+        </Flex>
+      </Box>
+    </DropdownProvider>
   );
 };
 

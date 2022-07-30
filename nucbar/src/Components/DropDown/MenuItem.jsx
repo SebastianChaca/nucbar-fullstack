@@ -3,9 +3,12 @@ import { useHistory } from 'react-router';
 
 const MenuItem = ({ children, onClick, bg, to }) => {
   const history = useHistory();
+  const handleClick = () => {
+    onClick && onClick();
+  };
   return (
     <Button
-      onClick={() => (onClick ? onClick() : to ? history.push(to) : null)}
+      onClick={() => (onClick ? handleClick() : to ? history.push(to) : null)}
       p={0}
       bg={bg}
       borderRadius="0px"

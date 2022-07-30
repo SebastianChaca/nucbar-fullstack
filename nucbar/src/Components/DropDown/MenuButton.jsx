@@ -1,10 +1,18 @@
+import { useContext } from 'react';
 import { Button, Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-const MenuButton = ({ onClick, children, open, color }) => {
+import { DropDownContext } from './DropdownProvider';
+const MenuButton = ({ onClick, children, color }) => {
+  const { open, setOpen } = useContext(DropDownContext);
   const variants = {
     open: { rotate: 180 },
     close: { rotate: 0 },
+  };
+
+  const handleClick = () => {
+    setOpen(prevOpen => !prevOpen);
+    onclick && onClick();
   };
   return (
     <Button
@@ -12,7 +20,7 @@ const MenuButton = ({ onClick, children, open, color }) => {
       _hover={{ bg: 'none' }}
       _focus={{ outline: 'none' }}
       p={0}
-      onClick={() => onClick()}
+      onClick={handleClick}
     >
       {children}
       <motion.div

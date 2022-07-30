@@ -1,12 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useRef } from 'react';
 
-const useDropDown = () => {
+export const DropDownContext = createContext({});
+const { Provider } = DropDownContext;
+const DropdownProvider = React.forwardRef(({ children }, ref) => {
   const [open, setOpen] = useState(false);
-  const ref = useRef();
 
-  const handleOpen = () => {
-    setOpen(!open);
-  };
   useEffect(() => {
     const checkIfClickedOutside = e => {
       // If the menu is open and the clicked target is not within the menu,
@@ -23,7 +21,10 @@ const useDropDown = () => {
       document.removeEventListener('mousedown', checkIfClickedOutside);
     };
   }, [open]);
-  return { open, ref, handleOpen };
-};
+  const handleOpen = () => {
+    setOpen(prevOpen => !prevOpen);
+  };
+  return <Provider value={{ open, setOpen, handleOpen }}>{children}</Provider>;
+});
 
-export default useDropDown;
+export default DropdownProvider;

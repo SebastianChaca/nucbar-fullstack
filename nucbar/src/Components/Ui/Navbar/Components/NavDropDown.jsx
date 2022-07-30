@@ -1,6 +1,5 @@
 import { Box, Text, Flex } from '@chakra-ui/layout';
 import React from 'react';
-import useDropDown from '../../../../Hooks/useDropDown';
 import { useSelector } from 'react-redux';
 import { Menu, MenuButton, Menuitem, MenuItemGroup } from '../../../DropDown';
 import { useDispatch } from 'react-redux';
@@ -11,7 +10,6 @@ import { Avatar } from '@chakra-ui/avatar';
 import { Link } from 'react-router-dom';
 
 const NavDropDown = () => {
-  const { open, handleOpen, ref } = useDropDown();
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
   const signOut = () => {
@@ -23,9 +21,9 @@ const NavDropDown = () => {
   const name = user?.currentUser?.name;
   const upperCaseName = name.charAt(0).toUpperCase() + name.slice(1);
   return (
-    <Box mr="10px" display={containerResponsive} ref={ref}>
+    <Box mr="10px" display={containerResponsive}>
       <Menu>
-        <MenuButton onClick={() => handleOpen()} open={open} color="nucba.form">
+        <MenuButton color="nucba.form">
           <Avatar name={name} bg={'nucba.fourth'} size="sm" mr="10px" />
           <Text color="nucba.form" textStyle="semiBold" id="drop">
             {upperCaseName}
@@ -33,8 +31,8 @@ const NavDropDown = () => {
         </MenuButton>
 
         <Box>
-          <MenuItemGroup w="150px" open={open}>
-            <Menuitem onClick={handleOpen}>
+          <MenuItemGroup w="150px">
+            <Menuitem>
               <Flex
                 alignItems="center"
                 justifyContent="center"

@@ -7,10 +7,11 @@ import {
   Button,
   Flex,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { AiFillExclamationCircle } from 'react-icons/ai';
-
-const InputMenuItem = ({ handleSubmit, handleClose, product }) => {
+import { DropDownContext } from '../../DropDown/DropdownProvider';
+const InputMenuItem = ({ handleSubmit, product }) => {
+  const { handleOpen } = useContext(DropDownContext);
   const [inputMode, setInputMode] = useState(false);
   const [applyValue, setApplyValue] = useState(null);
   const [error, setError] = useState(null);
@@ -24,7 +25,7 @@ const InputMenuItem = ({ handleSubmit, handleClose, product }) => {
       return;
     }
     handleSubmit(applyValue);
-    handleClose();
+    handleOpen();
   };
 
   if (inputMode) {
