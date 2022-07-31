@@ -42,7 +42,7 @@ const Products = () => {
           <BreadCrumb items={items} />
           <OrderByDropDown />
         </Flex>
-        <Flex alignItems="flex-start" justifyContent="space-between">
+        <Flex alignItems="flex-start" justifyContent="left" w={'100%'}>
           <Box ml="10px">
             <SwitcherCard text={'Envío gratis'} />
             <SwitcherCard text={'Desde 10% OFF'} discount />
@@ -50,7 +50,9 @@ const Products = () => {
               <Brands loading={loading} />
             </Box>
           </Box>
-          <ProductsList />
+          <Box w={'70%'} ml="50px">
+            <ProductsList />
+          </Box>
         </Flex>
       </Box>
     </>

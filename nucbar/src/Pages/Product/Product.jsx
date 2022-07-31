@@ -22,11 +22,7 @@ const Product = () => {
   if (loading || !selectedProduct) {
     return <LoadingSpinner />;
   }
-  return (
-    <>
-      <ProductDetail product={selectedProduct} />
-    </>
-  );
+  return <ProductDetail product={selectedProduct} />;
 };
 
 export default Product;

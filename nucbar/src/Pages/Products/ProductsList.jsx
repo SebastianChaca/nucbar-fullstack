@@ -39,12 +39,12 @@ const ProductsList = () => {
     );
   }
   return (
-    <Box>
+    <Flex justifyContent={'center'} display="column">
       {products &&
         products?.data?.products.map((product, index) => {
           return <ListCard product={product} index={index} key={product.id} />;
         })}
-    </Box>
+    </Flex>
   );
 };
 export default ProductsList;

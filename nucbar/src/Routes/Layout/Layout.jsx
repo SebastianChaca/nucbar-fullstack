@@ -8,8 +8,7 @@ export const Layout = ({ children }) => {
     <Switch>
       <Route>
         <NavBar />
-
-        {children}
+        <div style={{ minHeight: 'calc(100vh - 260px)' }}>{children}</div>
         <Footer />
       </Route>
     </Switch>
