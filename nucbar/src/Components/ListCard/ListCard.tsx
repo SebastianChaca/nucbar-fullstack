@@ -1,12 +1,10 @@
-import { useState } from 'react';
+import { Box, Flex, LinkOverlay } from '@chakra-ui/react';
 
-import { Box, Flex, Text, Button, LinkOverlay } from '@chakra-ui/react';
-import { AiOutlineHeart } from 'react-icons/ai';
 import { Link as ReachLink } from 'react-router-dom';
 
 import { CardItems } from './Components';
-
-const ListCard = ({ product, index }) => {
+import {Props} from './Components/interfaces'
+const ListCard = ({ product, index }: Props) => {
   return (
     <CardItems.Provider product={product}>
       <CardItems.Container index={index}>
@@ -17,10 +15,10 @@ const ListCard = ({ product, index }) => {
             <Box position="relative" ml="8%" w="80%">
               <Flex justifyContent="space-between" alignItems="start">
                 <CardItems.Title />
-                <CardItems.StarsRate product={product} />
+                <CardItems.StarsRate />
               </Flex>
               <Box>
-                <CardItems.Price product={product} />
+                <CardItems.Price />
                 <CardItems.Description />
                 <CardItems.FreeShipping />
               </Box>

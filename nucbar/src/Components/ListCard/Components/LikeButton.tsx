@@ -1,7 +1,7 @@
-import React from 'react';
+
 import { Button } from '@chakra-ui/react';
 import { AiOutlineHeart } from 'react-icons/ai';
-import useListContext from './useListContext';
+import useListContext from './Context/useListContext';
 const LikeButton = () => {
   const { show } = useListContext();
   return (

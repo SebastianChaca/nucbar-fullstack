@@ -1,8 +1,11 @@
-import React from 'react';
 import { Box } from '@chakra-ui/react';
 
-import useListContext from './useListContext';
-const Container = ({ children, index }) => {
+import useListContext from './Context/useListContext';
+interface Props{
+  children: JSX.Element | JSX.Element[],
+  index: number
+}
+const Container = ({ children, index }: Props) => {
   const { setShowEnter, setShowLeave } = useListContext();
   return (
     <Box
@@ -12,7 +15,7 @@ const Container = ({ children, index }) => {
       w={'100%'}
       bg="nucba.form"
       p="40px"
-      borderRadius={index === 0 && '5px 5px 0px 0px'}
+      borderRadius={index === 0 ? '5px 5px 0px 0px' : undefined}
       lineHeight="19px"
       onMouseEnter={() => setShowEnter()}
       onMouseLeave={() => setShowLeave()}

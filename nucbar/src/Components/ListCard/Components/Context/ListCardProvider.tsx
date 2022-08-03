@@ -1,7 +1,9 @@
 import React, { useState, createContext } from 'react';
+import { ListCardContextProps, Props } from './interfaces';
+export const ListCardContext = createContext({} as ListCardContextProps);
 
-export const ListCardContext = createContext({});
-const ListCardProvider = ({ product, children }) => {
+
+const ListCardProvider = ({ product, children }: Props) => {
   const [show, setShow] = useState(false);
   const setShowEnter = () => {
     setShow(true);

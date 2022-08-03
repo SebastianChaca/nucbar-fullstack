@@ -1,6 +1,5 @@
-import React from 'react';
 import { Box, Flex, Text } from '@chakra-ui/react';
-import useListContext from './useListContext';
+import useListContext from './Context/useListContext';
 const Price = () => {
   const { product } = useListContext();
   return (

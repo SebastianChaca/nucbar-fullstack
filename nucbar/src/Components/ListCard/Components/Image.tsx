@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image as ChakraImage } from '@chakra-ui/image';
-import useListContext from './useListContext';
+import useListContext from './Context/useListContext';
 const Image = () => {
   const { product } = useListContext();
   return (

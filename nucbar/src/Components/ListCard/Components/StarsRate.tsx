@@ -1,7 +1,6 @@
-import React from 'react';
 import Stars from '../../StarsRate/StarsRate';
 import { Flex } from '@chakra-ui/react';
-import useListContext from './useListContext';
+import useListContext from './Context/useListContext';
 
 const StarsRate = () => {
   const { product } = useListContext();
