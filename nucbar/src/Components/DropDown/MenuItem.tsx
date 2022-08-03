@@ -1,17 +1,18 @@
 import { Button } from '@chakra-ui/button';
 import { useHistory } from 'react-router';
-import { DropDownContext } from './DropdownProvider';
-import { useContext } from 'react';
-const MenuItem = ({ children, onClick, bg, to }) => {
-  const { handleOpen } = useContext(DropDownContext);
+import useDropdownContext from './Provider/useDropdownContext';
+import { MenuItemProps } from './interfaces';
+
+const MenuItem = ({ children, onClick, bg, to }: MenuItemProps) => {
+  const { handleOpen } = useDropdownContext();
   const history = useHistory();
   const handleClick = () => {
     handleOpen();
     onClick && onClick();
   };
   return (
-    <Button
-      onClick={() => (onClick ? handleClick() : to ? history.push(to) : null)}
+    <Button    
+      onClick={()=> to ? history.push(to) : handleClick}
       p={0}
       bg={bg}
       borderRadius="0px"

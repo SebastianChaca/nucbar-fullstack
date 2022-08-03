@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { useState, useContext } from 'react';
 import { AiFillExclamationCircle } from 'react-icons/ai';
-import { DropDownContext } from '../../DropDown/DropdownProvider';
+import { DropDownContext } from '../../DropDown/Provider/DropdownProvider';
 const InputMenuItem = ({ handleSubmit, product }) => {
   const { handleOpen } = useContext(DropDownContext);
   const [inputMode, setInputMode] = useState(false);

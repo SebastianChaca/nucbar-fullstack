@@ -1,17 +1,18 @@
-import { useContext } from 'react';
 import { Button, Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { DropDownContext } from './DropdownProvider';
-const MenuButton = ({ onClick, children, color }) => {
-  const { open, setOpen } = useContext(DropDownContext);
+import { MenuButtonProps } from './interfaces';
+import useDropdownContext from './Provider/useDropdownContext';
+
+const MenuButton = ({ onClick, children, color }: MenuButtonProps ) => {
+  const { open, handleOpen} = useDropdownContext()
   const variants = {
     open: { rotate: 180 },
     close: { rotate: 0 },
   };
 
   const handleClick = () => {
-    setOpen(prevOpen => !prevOpen);
+    handleOpen()
     onclick && onClick();
   };
   return (

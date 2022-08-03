@@ -1,11 +1,11 @@
 import { Flex } from '@chakra-ui/layout';
 import { motion } from 'framer-motion';
-import React, { useContext } from 'react';
-import { DropDownContext } from './DropdownProvider';
+import { MenuItemGroupProps, MotionVariantTypes } from './interfaces';
+import useDropdownContext from './Provider/useDropdownContext';
 
-const MenuItemGroup = ({ children, ref, w }) => {
-  const { open } = useContext(DropDownContext);
-  const motionVariants = {
+const MenuItemGroup = ({ children, w }: MenuItemGroupProps) => {
+  const { open } = useDropdownContext();
+  const motionVariants : MotionVariantTypes= {
     enter: {
       visibility: 'visible',
       opacity: 1,
