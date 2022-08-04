@@ -13,7 +13,7 @@ const MenuButton = ({ onClick, children, color }: MenuButtonProps ) => {
 
   const handleClick = () => {
     handleOpen()
-    onclick && onClick();
+    onclick && onClick?.();
   };
   return (
     <Button

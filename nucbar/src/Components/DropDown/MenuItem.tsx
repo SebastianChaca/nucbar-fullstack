@@ -12,7 +12,7 @@ const MenuItem = ({ children, onClick, bg, to }: MenuItemProps) => {
   };
   return (
     <Button    
-      onClick={()=> to ? history.push(to) : handleClick}
+      onClick={()=> to ? history.push(to) : handleClick()}
       p={0}
       bg={bg}
       borderRadius="0px"

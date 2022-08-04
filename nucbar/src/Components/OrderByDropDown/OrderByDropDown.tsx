@@ -7,7 +7,7 @@ import { Menu, MenuButton, Menuitem, MenuItemGroup } from '../DropDown';
 const OrderByDropDown = () => {
   const history = useHistory();
   const { search } = useLocation();
-  const [select, setSelect] = useState(null);
+  const [select, setSelect] = useState<string | null>(null);
   const prevSelect = usePrevious(select);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const OrderByDropDown = () => {
       <Text fontWeight="500"></Text>
 
       <Menu>
-        <MenuButton color="nucba.primary">
+        <MenuButton color="nucba.primary" >
           <Text textStyle="regular" mr="5px">
             Ordernar por
           </Text>
@@ -35,7 +35,7 @@ const OrderByDropDown = () => {
 
         <MenuItemGroup w="200px">
           <Menuitem
-            onClick={e => {
+            onClick={() => {
               setSelect('Mayor precio');
             }}
           >

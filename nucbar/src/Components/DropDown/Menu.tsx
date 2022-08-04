@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Flex, Box } from '@chakra-ui/react';
 import DropdownProvider from './Provider/DropdownProvider';
 interface Props{
-  children: JSX.Element
+  children: JSX.Element | JSX.Element[]
 }
 const Menu = ({ children }: Props) => {
   const ref = useRef(null);
