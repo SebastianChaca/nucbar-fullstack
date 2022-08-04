@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useRef, ChangeEvent, MouseEvent } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { Context, Props, FixMeLater } from './interfaces';
 
 export const DropDownContext = createContext({} as Context);
@@ -8,9 +8,10 @@ const DropdownProvider = React.forwardRef(({ children }: Props, ref:FixMeLater) 
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const checkIfClickedOutside = (event : FixMeLater):void=> {
+    const checkIfClickedOutside = (event : MouseEvent)=> {
       // If the menu is open and the clicked target is not within the menu,
       // then close the menu
+   
 
       if (open && ref.current && !ref.current.contains(event.target)) {
         setOpen(false);
