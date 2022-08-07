@@ -16,3 +16,18 @@ export interface Product {
 }
 
 export type Products = Product[];
+
+export interface User {
+  email: string;
+  password: string;
+  role: string;
+  passwordChangeAt: Date;
+  passwordResetToken: string;
+  passwordResetExpires: Date;
+  name: string;
+  lastName: string;
+  avatarImg: string;
+  createdAt: Date;
+  active: boolean;
+  isAdmin: boolean;
+}

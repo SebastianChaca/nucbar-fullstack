@@ -7,7 +7,7 @@ import SwitcherCard from '../../Components/SwitcherCard/SwitcherCard';
 import ProductsList from './ProductsList';
 import useFetch from '../../Hooks/useFetch';
 import { url } from '../../Utils/apiUrl';
-import { getProductsStats } from '../../Redux/Actions/statsActions';
+import { getProductsStats } from '../../Redux/Actions/Stats/statsActions';
 import Brands from './Brands';
 import { cleanQuery } from '../../Utils/cleanQuery';
 import BreadCrumb from './BreadCrumb';
