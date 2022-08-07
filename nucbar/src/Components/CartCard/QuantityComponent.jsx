@@ -3,7 +3,7 @@ import React from 'react';
 import { BsPlus } from 'react-icons/bs';
 import { BiMinus } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
-import { addItem, removeItem } from '../../Redux/Actions/cartActions';
+import { addItem, removeItem } from '../../Redux/Actions/Cart/cartActions';
 const QuantityComponent = ({ product }) => {
   const dispatch = useDispatch();
 

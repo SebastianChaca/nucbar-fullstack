@@ -3,7 +3,7 @@ import { GoHome } from '../../Components/Shared/SharedComponents';
 import { useEffect } from 'react';
 import CartCard from '../../Components/CartCard/CartCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTotals } from '../../Redux/Actions/cartActions';
+import { getTotals } from '../../Redux/Actions/Cart/cartActions';
 import Totals from './Totals';
 import RectangularCard from '../../Components/RectangularCard/RectangularCard';
 import { useHistory } from 'react-router-dom';

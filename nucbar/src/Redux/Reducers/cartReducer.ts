@@ -1,25 +1,21 @@
-import {
-  ADD_ITEM,
-  REMOVE_ITEM,
-  CLEAR_CART,
-  GET_TOTALS,
-  SET_ITEM,
-} from '../Actions/cartActions';
-
+import { CartActionTypes, CartActions } from '../Actions/Cart/ActionTypes';
+import { Product } from '../../Interfaces/BDInterfaces';
 import {
   addItemToCart,
   removeItemFromCart,
   getTotals,
   setItemToCart,
 } from '../Utils/cartUtils';
-
+interface State {
+  cartItems: [] | Product[];
+}
 const INITIAL_STATE = {
   cartItems: [],
 };
 
-const cartReducer = (state = INITIAL_STATE, action) => {
+const cartReducer = (state: State = INITIAL_STATE, action: CartActions) => {
   switch (action.type) {
-    case SET_ITEM:
+    case CartActionTypes.SET_ITEM:
       return {
         ...state,
         cartItems: setItemToCart(
@@ -28,24 +24,24 @@ const cartReducer = (state = INITIAL_STATE, action) => {
           action.payload.quantity
         ),
       };
-    case ADD_ITEM:
+    case CartActionTypes.ADD_ITEM:
       return {
         ...state,
         cartItems: addItemToCart(state.cartItems, action.payload),
       };
 
-    case REMOVE_ITEM:
+    case CartActionTypes.REMOVE_ITEM:
       return {
         ...state,
         cartItems: removeItemFromCart(state.cartItems, action.payload),
       };
 
-    case CLEAR_CART:
+    case CartActionTypes.CLEAR_CART:
       return {
         ...state,
         cartItems: [],
       };
-    case GET_TOTALS:
+    case CartActionTypes.GET_TOTALS:
       return {
         ...state,
         totals: getTotals(state.cartItems),

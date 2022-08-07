@@ -5,7 +5,7 @@ import OpacityDiv from '../../../Transitions/Opacity/OpacityDiv';
 import { GrClose } from 'react-icons/gr';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useSelector, useDispatch } from 'react-redux';
-import { handleUserSidebar } from '../../../../Redux/Actions/sidebarActions';
+import { handleUserSidebar } from '../../../../Redux/Actions/SideBar/sidebarActions';
 const HamburgerDash = () => {
   const { userSidebar } = useSelector(state => state.sidebars);
   const dispatch = useDispatch();

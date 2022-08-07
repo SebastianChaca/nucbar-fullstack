@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Flex, Text, Button } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
-import { setItems } from '../../Redux/Actions/cartActions';
+import { setItems } from '../../Redux/Actions/Cart/cartActions';
 import { useHistory } from 'react-router-dom';
 
 import DropDown from './StockDropDownComponents/DropDown';
