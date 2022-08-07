@@ -13,7 +13,7 @@ import { Box, Button, Text } from '@chakra-ui/react';
 import { LinkText, FormContainer } from '../../Components/Login';
 import useFetch from '../../Hooks/useFetch';
 
-import { setCurrentUser } from '../../Redux/Actions/userActions';
+import { setCurrentUser } from '../../Redux/Actions/User/userActions';
 
 const Login = () => {
   const [loginMode, setLoginMode] = useState(true);

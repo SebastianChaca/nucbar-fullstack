@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Menu, MenuButton, Menuitem, MenuItemGroup } from '../../../DropDown';
 import { useDispatch } from 'react-redux';
-import { singOut } from '../../../../Redux/Actions/userActions';
+import { singOut } from '../../../../Redux/Actions/User/userActions';
 import LogBtn from './LogBtn';
 import { containerResponsive } from '../../../../Utils/responsives';
 import { Avatar } from '@chakra-ui/avatar';

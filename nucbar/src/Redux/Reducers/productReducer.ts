@@ -23,8 +23,14 @@ const productReducer = (
       return {
         ...state,
         products: action.payload,
+        loading: false,
       };
-
+    case ProductActionsTypes.START_PRODUCTS:
+      return { ...state, loading: true };
+    case ProductActionsTypes.FINISH_PRODUCTS:
+      return { ...state, loading: false };
+    case ProductActionsTypes.FAIL_PRODUCTS:
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }
