@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { url } from '../../Utils/apiUrl';
 import useFetch from '../../Hooks/useFetch';
-import { fetchProducts } from '../../Redux/Actions/prodcutsActions';
+import { fetchProducts } from '../../Redux/Actions/Products/prodcutsActions';
 import { LoadingSpinner } from '../../Components/Shared/SharedComponents';
 
 const Product = () => {

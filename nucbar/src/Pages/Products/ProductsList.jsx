@@ -5,7 +5,7 @@ import ListCard from '../../Components/ListCard/ListCard';
 import { url } from '../../Utils/apiUrl';
 import useFetch from '../../Hooks/useFetch';
 import { useLocation } from 'react-router-dom';
-import { fetchProducts } from '../../Redux/Actions/prodcutsActions';
+import { fetchProducts } from '../../Redux/Actions/Products/prodcutsActions';
 import {
   GoHome,
   LoadingSpinner,
