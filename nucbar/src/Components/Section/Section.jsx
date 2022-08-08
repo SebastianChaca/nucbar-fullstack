@@ -1,26 +1,28 @@
 import { useEffect } from 'react';
 
-import useFetch from '../../Hooks/useFetch';
+import { fetchProductsTest } from '../../Redux/Actions/Products/prodcutsActions';
 import { url } from '../../Utils/apiUrl';
-import { SectionItems, SectionSekeleton, SeeAllBtn } from './Components';
+import { SectionItems } from './Components';
+import { useDispatch, useSelector } from 'react-redux';
+
 const Section = ({ category }) => {
-  const { loading, fetchData, response } = useFetch();
-  // const lastSarasa = sarasa[sarasa.length - 1] - 1;
+  const dispatch = useDispatch();
+  const { products, loading } = useSelector(state => state.products);
 
   useEffect(() => {
-    fetchData('get', `${url}/products?category=${category}`);
+    dispatch(fetchProductsTest(`${url}/products?category=${category}`));
   }, []);
 
   return (
     <SectionItems.Container
-      response={response}
+      response={products}
       loading={loading}
       category={category}
     >
       <SectionItems.Sekeleton />
 
       <SectionItems.Grid>
-        {response ? <SectionItems.Cards /> : <SectionItems.SekeletonCards />}
+        {products ? <SectionItems.Cards /> : <SectionItems.SekeletonCards />}
       </SectionItems.Grid>
       <SectionItems.SeeAllBtn />
     </SectionItems.Container>
