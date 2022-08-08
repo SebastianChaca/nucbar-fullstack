@@ -1,4 +1,4 @@
-import  SectionSekeleton from './SectionSekeleton'
+import  SectionSekeleton from './SectionSekeletonAndTitle'
 import SeeAllBtn from './SeeAllBtn'
 import Grid from './Grid'
 import Cards from './Cards'
@@ -6,7 +6,7 @@ import SekeletonCards from './SekeletonCards'
 import Container from './Container'
 
 export const SectionItems=Object.assign({}, {
-    Sekeleton: SectionSekeleton,
+    Title: SectionSekeleton,
     SeeAllBtn,
     Grid,
     Cards,

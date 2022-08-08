@@ -19,7 +19,7 @@ const Section = ({ category }) => {
       loading={loading}
       category={category}
     >
-      <SectionItems.Sekeleton />
+      <SectionItems.Title />
 
       <SectionItems.Grid>
         {products ? <SectionItems.Cards /> : <SectionItems.SekeletonCards />}

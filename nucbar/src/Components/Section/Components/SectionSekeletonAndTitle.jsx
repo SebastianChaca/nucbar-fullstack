@@ -1,8 +1,9 @@
 import React from 'react';
 import { Skeleton, Text } from '@chakra-ui/react';
 import useSectionContext from './Context/useSectionContext';
-const SectionSekeleton = () => {
+const SectionSekeletonAndTitle = () => {
   const { loading, category } = useSectionContext();
+  //TODO:pasar a mayuscula la primera letra
   return (
     <Skeleton
       h="40px"
@@ -19,4 +20,4 @@ const SectionSekeleton = () => {
   );
 };
 
-export default SectionSekeleton;
+export default SectionSekeletonAndTitle;
