@@ -2,7 +2,9 @@ import { Products } from '../../../Interfaces/BDInterfaces';
 import { Dispatch } from 'redux';
 import { ProductActionsTypes, ProductActions } from './ActionsTypes';
 import axios from 'axios';
-
+// export const filterAction = (products: Product[]) => async (
+//   dispatch: Dispatch<Action>
+// ) => {
 export const fetchProducts = (products: Products) => ({
   type: ProductActionsTypes.GET_PRODUCTS,
   payload: products,
@@ -21,8 +23,8 @@ export const failProduct = (error: any) => ({
   payload: error,
 });
 
-export const fetchProductsTest = (url: string) => {
-  return async (dispatch: Dispatch<ProductActions>) => {
+export const fetchProductsTest =
+  (url: string) => async (dispatch: Dispatch<ProductActions>) => {
     dispatch({
       type: ProductActionsTypes.START_PRODUCTS,
     });
@@ -31,10 +33,9 @@ export const fetchProductsTest = (url: string) => {
 
       dispatch({
         type: ProductActionsTypes.GET_PRODUCTS,
-        payload: data,
+        payload: data.data.products,
       });
     } catch (err) {
       dispatch(failProduct(err));
     }
   };
-};

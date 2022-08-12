@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import Home from '../Pages/Home/Home.jsx';
+import Home from '../Pages/Home/Home.tsx';
 import Login from '../Pages/Session/Login.jsx';
 import NotFound from '../Pages/NotFound/NotFound.jsx';
 import Products from '../Pages/Products/Products.jsx';

@@ -3,7 +3,7 @@ import {
   ProductActionsTypes,
   ProductActions,
 } from '../Actions/Products/ActionsTypes';
-interface State {
+export interface ProductState {
   products: Products | null;
   loading: boolean;
   error: string | null;
@@ -15,7 +15,7 @@ const INITIAL_STATE = {
 };
 
 const productReducer = (
-  state: State = INITIAL_STATE,
+  state: ProductState = INITIAL_STATE,
   action: ProductActions
 ) => {
   switch (action.type) {

@@ -1,6 +1,10 @@
 import React from 'react';
 import { Grid as GridSection } from '@chakra-ui/react';
-const Grid = ({ children }) => {
+
+interface Props {
+  children?: JSX.Element | JSX.Element[];
+}
+const Grid = ({ children }: Props) => {
   return (
     <GridSection
       templateColumns={{

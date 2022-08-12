@@ -1,16 +1,13 @@
 import { Box, Skeleton, LinkOverlay } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
+import { Product } from '../../Interfaces/BDInterfaces';
 import ProductImage from '../ProductImage/ProductImage';
 import { CardItems } from './Components';
-
-export const Card = ({
-  index,
-  showBtn,
-  setShowBtn,
-  lastElement,
-  loading,
-  product,
-}) => {
+interface Props {
+  product: Product | null;
+  loading?: boolean;
+}
+export const Card = ({ loading, product }: Props) => {
   if (loading) {
     return (
       <Skeleton

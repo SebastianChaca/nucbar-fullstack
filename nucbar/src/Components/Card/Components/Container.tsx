@@ -1,7 +1,14 @@
 import React from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import CardProvider from './Context/CardProvider';
-const Container = ({ product, children }) => {
+
+import { Product } from '../../../Interfaces/BDInterfaces';
+
+interface Props {
+  children: JSX.Element | JSX.Element[];
+  product: Product | null;
+}
+const Container = ({ product, children }: Props) => {
   return (
     <CardProvider product={product}>
       <Flex justifyContent="center" my="20px" position="relative">
