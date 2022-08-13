@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import useSectionContext from './Context/useSectionContext';
 const SeeAllBtn = () => {
   const { loading, category } = useSectionContext();
-  console.log(category);
+
   return (
     <>
       {!loading && (

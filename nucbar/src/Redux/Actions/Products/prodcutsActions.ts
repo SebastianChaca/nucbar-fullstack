@@ -1,10 +1,7 @@
 import { Products } from '../../../Interfaces/BDInterfaces';
 import { Dispatch } from 'redux';
 import { ProductActionsTypes, ProductActions } from './ActionsTypes';
-import axios from 'axios';
-// export const filterAction = (products: Product[]) => async (
-//   dispatch: Dispatch<Action>
-// ) => {
+import axiosConfig from '../../../Axios/axiosConfig';
 export const fetchProducts = (products: Products) => ({
   type: ProductActionsTypes.GET_PRODUCTS,
   payload: products,
@@ -24,12 +21,12 @@ export const failProduct = (error: any) => ({
 });
 
 export const fetchProductsTest =
-  (url: string) => async (dispatch: Dispatch<ProductActions>) => {
+  (params: string) => async (dispatch: Dispatch<ProductActions>) => {
     dispatch({
       type: ProductActionsTypes.START_PRODUCTS,
     });
     try {
-      const { data } = await axios.get(url);
+      const { data } = await axiosConfig.get(`/products?category=${params}`);
 
       dispatch({
         type: ProductActionsTypes.GET_PRODUCTS,

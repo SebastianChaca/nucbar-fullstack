@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
-
 import { fetchProductsTest } from '../../Redux/Actions/Products/prodcutsActions';
-import { url } from '../../Utils/apiUrl';
 import { SectionItems } from './Components';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../Hooks/useTypedSelector';
@@ -14,7 +12,7 @@ const Section = ({ category }: Props) => {
   const { products, loading } = useTypedSelector(state => state.products);
 
   useEffect(() => {
-    dispatch(fetchProductsTest(`${url}/products?category=${category}`));
+    dispatch(fetchProductsTest(category));
   }, []);
 
   return (
