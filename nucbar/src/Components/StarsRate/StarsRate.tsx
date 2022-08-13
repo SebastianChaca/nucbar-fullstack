@@ -1,6 +1,9 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { FaStar, FaRegStar } from 'react-icons/fa';
-const StarsRate = ({ rate }) => {
+interface Props {
+  rate: number;
+}
+const StarsRate = ({ rate }: Props) => {
   return (
     <Flex>
       {[...Array(rate).keys()].map((item, index) => {

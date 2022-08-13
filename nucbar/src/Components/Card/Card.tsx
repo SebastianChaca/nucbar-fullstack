@@ -26,7 +26,7 @@ export const Card = ({ loading, product }: Props) => {
   return (
     <CardItems.Container product={product}>
       <LinkOverlay as={ReachLink} to={`/product/${product?.id}`}>
-        <ProductImage product={product} boxSize="220px" />
+        <ProductImage image={product?.image} boxSize="220px" />
         <hr />
         <Box mt="15px" mb="10px" alignContent={'center'}>
           <CardItems.Name />

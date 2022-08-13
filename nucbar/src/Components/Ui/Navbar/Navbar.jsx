@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Image } from '@chakra-ui/react';
 import Logo from '../../../Assets/logo1.png';
 import NavContainer from './Components/NavContainer';

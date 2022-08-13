@@ -1,4 +1,3 @@
-import React from 'react';
 import Section from '../../Components/Home/Section';
 import { MemoGallery } from '../../Components/Ui/Gallery/Gallery';
 

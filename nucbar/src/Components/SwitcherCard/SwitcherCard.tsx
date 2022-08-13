@@ -1,7 +1,10 @@
 import { Flex, Text } from '@chakra-ui/layout';
 import { Switch } from '@chakra-ui/switch';
-
-const SwitcherCard = ({ text, discount }) => {
+interface Props {
+  text: string;
+  discount: boolean;
+}
+const SwitcherCard = ({ text, discount }: Props) => {
   return (
     <Flex
       bg="nucba.form"
@@ -17,8 +20,8 @@ const SwitcherCard = ({ text, discount }) => {
         mr="10px"
         fontSize="14px"
         fontWeight="500"
-        bg={discount && 'nucba.fourth'}
-        color={discount && 'nucba.third'}
+        bg={discount ? 'nucba.fourth' : 'current'}
+        color={discount ? 'nucba.third' : 'current'}
         borderRadius="5px"
         px="4px"
         py="2px"

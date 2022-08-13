@@ -14,7 +14,7 @@ const CartCard = ({ product }) => {
         my="40px"
       >
         <Flex alignItems="center">
-          <ProductImage boxSize="120" product={product} />
+          <ProductImage boxSize="120" image={product.image} />
 
           <Text textStyle="title" ml="15px">
             {product?.name}

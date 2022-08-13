@@ -14,7 +14,7 @@ const ProductDetail = ({ product }) => {
       boxShadow="md"
       justifyContent="space-around"
     >
-      <ProductImage product={product} boxSize="320px" />
+      <ProductImage image={product.image} boxSize="320px" />
       <PriceDetail product={product} />
       <BuyCard product={product} />
     </Flex>

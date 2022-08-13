@@ -1,7 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import React from 'react';
 
-const OpacityDiv = ({ children, open }) => {
+interface Props {
+  children: JSX.Element | JSX.Element[];
+  open: boolean;
+}
+const OpacityDiv = ({ children, open }: Props) => {
   return (
     <AnimatePresence>
       {open && (

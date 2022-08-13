@@ -1,6 +1,8 @@
 import { Flex } from '@chakra-ui/react';
-
-const NavContainer = ({ children }) => {
+interface Props {
+  children: JSX.Element | JSX.Element[];
+}
+const NavContainer = ({ children }: Props) => {
   return (
     <Flex
       as="nav"

@@ -1,13 +1,17 @@
 import React from 'react';
 import { Image } from '@chakra-ui/image';
-const ProductImage = ({ product, boxSize }) => {
+interface Props {
+  image: string | undefined;
+  boxSize: string;
+}
+const ProductImage = ({ image, boxSize }: Props) => {
   return (
     <Image
       boxSize={boxSize}
       objectFit="contain"
       src={
-        product
-          ? product.image
+        image
+          ? image
           : 'https://hogarcenter.com.ar/imagenes_productos/default.png'
       }
       mb="5px"
