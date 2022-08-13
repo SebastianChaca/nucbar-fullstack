@@ -4,7 +4,7 @@ import { MemoGallery } from '../../Components/Ui/Gallery/Gallery';
 
 export const Home = () => {
   //esto tiene que venir dle backoffice
-  const categorias = ['whiskys', 'habanos%20y%20puros', 'pipas'];
+  const categorias = ['whiskys', 'habanos y puros', 'pipas'];
   return (
     <>
       <MemoGallery />

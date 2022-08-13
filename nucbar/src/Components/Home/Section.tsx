@@ -1,24 +1,28 @@
-import { useEffect } from 'react';
-import { fetchProductsTest } from '../../Redux/Actions/Products/prodcutsActions';
+import { useEffect, useState } from 'react';
 import { SectionItems } from './Components';
-import { useDispatch } from 'react-redux';
-import { useTypedSelector } from '../../Hooks/useTypedSelector';
-
+import axiosConfig from '../../Axios/axiosConfig';
+import { Products } from '../../Interfaces/BDInterfaces';
+import useBaseUrlFetch from '../../Hooks/useBaseUrlFetch';
 interface Props {
   category: string;
 }
 const Section = ({ category }: Props) => {
-  const dispatch = useDispatch();
-  const { products, loading } = useTypedSelector(state => state.products);
-
+  const { getData, loading, response, error } = useBaseUrlFetch();
   useEffect(() => {
-    dispatch(fetchProductsTest(category));
+    const params = {
+      category,
+    };
+    getData(params);
   }, []);
+
+  if (error) {
+    return <h1>Error</h1>;
+  }
 
   return (
     <>
       <SectionItems.Container
-        response={products}
+        response={response}
         loading={loading}
         category={category}
       >
