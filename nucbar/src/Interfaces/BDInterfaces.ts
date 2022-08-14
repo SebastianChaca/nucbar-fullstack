@@ -13,6 +13,7 @@ export interface Product {
   descuento: boolean;
   freeShipping: boolean;
   hasStock: boolean;
+  quantity?: number;
 }
 
 export type Products = Product[];

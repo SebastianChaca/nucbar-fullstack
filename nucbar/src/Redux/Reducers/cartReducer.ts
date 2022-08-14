@@ -6,6 +6,7 @@ import {
   getTotals,
   setItemToCart,
 } from '../Utils/cartUtils';
+
 interface State {
   cartItems: [] | Product[];
 }

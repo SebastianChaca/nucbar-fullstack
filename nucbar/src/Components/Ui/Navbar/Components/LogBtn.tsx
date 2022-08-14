@@ -1,7 +1,8 @@
 import { Text, Button } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { ContainerResponsive } from '../../../../Utils/responsives';
 
-const LogBtn = ({ display }) => {
+const LogBtn = ({ display }: any) => {
   return (
     <Link to="/login">
       <Button

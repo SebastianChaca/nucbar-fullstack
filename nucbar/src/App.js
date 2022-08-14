@@ -12,7 +12,7 @@ import { theme } from './Chakra/Theme';
 function App() {
   return (
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
+      {/* <PersistGate persistor={persistor}> */}
         <ChakraProvider theme={theme}>
           <Router>
             <Layout>
@@ -21,7 +21,7 @@ function App() {
             </Layout>
           </Router>
         </ChakraProvider>
-      </PersistGate>
+      {/* </PersistGate> */}
     </Provider>
   );
 }
