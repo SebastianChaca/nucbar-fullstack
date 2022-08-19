@@ -1,7 +1,8 @@
-import { Products } from '../../../Interfaces/BDInterfaces';
+import { Products, Product } from '../../../Interfaces/BDInterfaces';
 import { Dispatch } from 'redux';
 import { ProductActionsTypes, ProductActions } from './ActionsTypes';
 import axiosConfig from '../../../Axios/axiosConfig';
+import { getProductsByCategory } from '../../../Services/getProducts';
 export const fetchProducts = (products: Products) => ({
   type: ProductActionsTypes.GET_PRODUCTS,
   payload: products,
@@ -21,12 +22,13 @@ export const failProduct = (error: any) => ({
 });
 
 export const fetchProductsTest =
+  //TODO: cambiar type
   (params: string) => async (dispatch: Dispatch<ProductActions>) => {
     dispatch({
       type: ProductActionsTypes.START_PRODUCTS,
     });
     try {
-      const { data } = await axiosConfig.get(`/products?category=${params}`);
+      const { data } = await getProductsByCategory(params);
 
       dispatch({
         type: ProductActionsTypes.GET_PRODUCTS,

@@ -1,23 +1,26 @@
 import { useEffect, useState } from 'react';
 import { SectionItems } from './Components';
-import axiosConfig from '../../Axios/axiosConfig';
 import { Products } from '../../Interfaces/BDInterfaces';
-import useBaseUrlFetch from '../../Hooks/useBaseUrlFetch';
+import { getProductsByCategory } from '../../Services/getProducts';
 interface Props {
   category: string;
 }
 const Section = ({ category }: Props) => {
-  const { getData, loading, response, error } = useBaseUrlFetch();
+  const [response, setresponse] = useState<Products | null>(null);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const params = {
       category,
     };
-    getData(params);
+    setLoading(true);
+    getProductsByCategory(params)
+      .then(res => setresponse(res.data.products))
+      .finally(() => setLoading(false));
   }, []);
 
-  if (error) {
-    return <h1>Error</h1>;
-  }
+  // if (error) {
+  //   return <h1>Error</h1>;
+  // }
 
   return (
     <>

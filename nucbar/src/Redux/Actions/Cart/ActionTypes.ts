@@ -11,17 +11,17 @@ export enum CartActionTypes {
 
 interface addItem {
   type: CartActionTypes.ADD_ITEM;
-  payload: Product;
+  payload: number;
 }
 
 interface setItems {
   type: CartActionTypes.SET_ITEM;
-  payload: { item: Product; quantity: number };
+  payload: { item: number; quantity: number };
 }
 
 interface removeItem {
   type: CartActionTypes.REMOVE_ITEM;
-  payload: Product;
+  payload: number;
 }
 
 interface clearCart {

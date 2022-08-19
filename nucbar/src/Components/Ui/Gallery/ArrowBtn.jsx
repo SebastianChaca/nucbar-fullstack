@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/button';
 import React from 'react';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
-import { containerResponsive } from '../../../Utils/responsives.js';
+import { containerResponsive } from '../../../Utils/responsives.ts';
 export const ArrowBtn = ({
   left,
   rigth,
