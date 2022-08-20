@@ -5,8 +5,10 @@ const api = axios.create({
   baseURL: 'http://localhost:4000',
 });
 
-export function makeRequest(url: string, options?: {}) {
+export function makeRequest<T>(url: string, options?: {}): Promise<T> {
   return api(url, options)
-    .then(res => res.data)
+    .then(res => {
+      return res.data.data;
+    })
     .catch(error => Promise.reject(error.response?.data?.message ?? 'Error'));
 }

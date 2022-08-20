@@ -5,49 +5,56 @@ type Props = (
   initialLoding?: boolean
 ) => { loading: boolean; value: unknown; error: string | null };
 
-export const useAsync: Props = (func, dependencies = []) => {
-  const { execute, ...state } = useAsyncInternal(func, dependencies, true);
+// export function useAsync<ValueInterface>(
+//   func: (params: any) => ValueInterface,
+//   dependencies: string[] = []
+// ) {
+//   const { execute, ...state } = useAsyncInternal<ValueInterface>(
+//     func,
+//     dependencies,
+//     true
+//   );
 
-  useEffect(() => {
-    execute();
-  }, [execute]);
+//   useEffect(() => {
+//     execute();
+//   }, [execute]);
 
-  return state;
-};
+//   return state;
+// }
 
-export function useAsyncFn<Async>(
-  func: () => any,
-  dependencies: string[] = []
-) {
-  return useAsyncInternal<Async>(func, dependencies, false);
-}
+// export function useAsyncFn<ValueInterface>(
+//   func: ()=> Promise<ValueInterface>,
+//   dependencies: string[] = []
+// ) {
+//   return useAsyncInternal(func, dependencies, false);
+// }
 
-function useAsyncInternal<Async>(
-  func: (...params: any) => any,
-  dependencies: string[] = [],
-  initialLoading = false
-) {
-  const [loading, setLoading] = useState(initialLoading);
-  const [error, setError] = useState<string | null>(null);
-  const [value, setValue] = useState<null | Async>(null);
+// function useAsyncInternal<ValueInterface>(
+//   func:()=> Promise<ValueInterface>,
+//   dependencies: string[] = [],
+//   initialLoading = false
+// ) {
+//   const [loading, setLoading] = useState(initialLoading);
+//   const [error, setError] = useState<string | null>(null);
+//   const [value, setValue] = useState<null | ValueInterface>(null);
 
-  const execute = useCallback((...params) => {
-    setLoading(true);
-    return func(...params)
-      .then((data: any) => {
-        setValue(data);
-        setError(null);
-        return data;
-      })
-      .catch((error: string) => {
-        setError(error);
-        setValue(null);
-        return Promise.reject(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, dependencies);
+//   const execute = useCallback((params: any) => {
+//     setLoading(true);
+//     return func(params: any)
+//       .then((value: ValueInterface) => {
+//         setValue(value);
+//         setError(null);
+//         return value;
+//       })
+//       .catch((error: string) => {
+//         setError(error);
+//         setValue(null);
+//         return Promise.reject(error);
+//       })
+//       .finally(() => {
+//         setLoading(false);
+//       });
+//   }, dependencies);
 
-  return { loading, error, value, execute };
-}
+//   return { loading, error, value, execute };
+// }

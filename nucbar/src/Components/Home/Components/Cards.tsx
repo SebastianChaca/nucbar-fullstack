@@ -7,7 +7,7 @@ const Cards = () => {
   if (!response) {
     return null;
   }
-  console.log(response);
+
   return (
     <>
       {response?.slice(0, 5).map((product, index) => {

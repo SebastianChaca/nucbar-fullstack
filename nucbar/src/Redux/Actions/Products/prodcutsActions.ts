@@ -28,11 +28,11 @@ export const fetchProductsTest =
       type: ProductActionsTypes.START_PRODUCTS,
     });
     try {
-      const { data } = await getProductsByCategory(params);
+      const data = await getProductsByCategory(params);
 
       dispatch({
         type: ProductActionsTypes.GET_PRODUCTS,
-        payload: data.data.products,
+        payload: data.products,
       });
     } catch (err) {
       dispatch(failProduct(err));
